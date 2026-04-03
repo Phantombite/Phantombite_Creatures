@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Characters>
+
+    <Character>
+      <Id>
+        <TypeId>MyObjectBuilder_Character</TypeId>
+        <SubtypeId>Groump</SubtypeId>
+      </Id>
+
+      <Name>Groump</Name>
+      <AnimationController>AC_Groump</AnimationController>
+      <Model>Models\Characters\Groump.mwm</Model>
+
+      <DeathSoundName>BotWolfDeath</DeathSoundName>
+      <LoopingFootsteps>true</LoopingFootsteps>
+      <PhysicalMaterial>Wolf</PhysicalMaterial>
+      <Mass>300</Mass>
+
+      <Skeleton>Tetrapod_simple</Skeleton>
+      <SpineBone>LizardSpine1</SpineBone>
+      <EnableFirstPersonView>false</EnableFirstPersonView>
+
+      <AnimationMappings>
+        <!-- kein Idle vorhanden — Walk als Fallback -->
+        <Mapping Name="Idle"   AnimationSubtypeName="Groump_Walk" />
+        <Mapping Name="Run"    AnimationSubtypeName="Groump_Walk" />
+        <Mapping Name="Walk"   AnimationSubtypeName="Groump_Walk" />
+        <Mapping Name="Attack" AnimationSubtypeName="Groump_Walk" />
+        <Mapping Name="Died"   AnimationSubtypeName="Groump_Death" />
+      </AnimationMappings>
+
+      <UsableByPlayer>false</UsableByPlayer>
+      <VisibleOnHud>false</VisibleOnHud>
+
+      <Inventory>
+        <InventoryVolume>1</InventoryVolume>
+        <InventoryMass>50</InventoryMass>
+      </Inventory>
+
+      <MaxHealth>20</MaxHealth>
+
+      <EnabledComponents>RagdollComponent</EnabledComponents>
+      <EnableSpawnInventoryAsContainer>false</EnableSpawnInventoryAsContainer>
+      <SpawnInventoryOnBodyRemoval>true</SpawnInventoryOnBodyRemoval>
+
+      <LootingTime>30</LootingTime>
+      <UsesAtmosphereDetector>true</UsesAtmosphereDetector>
+      <UsesReverbDetector>true</UsesReverbDetector>
+
+      <!-- BONES -->
+      <HeadBone>LizardHead</HeadBone>
+      <ModelRootBoneName>Lizard</ModelRootBoneName>
+
+      <VerticalPositionFlyingOnly>false</VerticalPositionFlyingOnly>
+      <UseOnlyWalking>false</UseOnlyWalking>
+
+      <MaxSlope>30</MaxSlope>
+      <MaxSprintSpeed>10.4</MaxSprintSpeed>
+      <MaxRunSpeed>9</MaxRunSpeed>
+      <MaxBackrunSpeed>1</MaxBackrunSpeed>
+      <MaxRunStrafingSpeed>1</MaxRunStrafingSpeed>
+      <MaxWalkSpeed>5</MaxWalkSpeed>
+      <MaxBackwalkSpeed>1</MaxBackwalkSpeed>
+      <MaxWalkStrafingSpeed>1</MaxWalkStrafingSpeed>
+      <MaxCrouchWalkSpeed>1</MaxCrouchWalkSpeed>
+      <MaxCrouchBackwalkSpeed>1</MaxCrouchBackwalkSpeed>
+      <MaxCrouchStrafingSpeed>1</MaxCrouchStrafingSpeed>
+
+      <CharacterHeadSize>0</CharacterHeadSize>
+      <CharacterHeadHeight>0.5</CharacterHeadHeight>
+      <CharacterCollisionScale>1</CharacterCollisionScale>
+      <CharacterCollisionHeight>2.75</CharacterCollisionHeight>
+      <CharacterCollisionWidth>2.75</CharacterCollisionWidth>
+
+      <MaxForce>500</MaxForce>
+
+      <BoneSet>
+        <Name>GroumpBody</Name>
+      </BoneSet>
+
+      <RagdollBonesMappings>
+        <BoneSet><Name>LizardNeck</Name><Bones>LizardHead LizardNeck</Bones><CollisionRadius>0.25</CollisionRadius></BoneSet>
+        <BoneSet><Name>LizardRibcage</Name><Bones>LizardRibcage LizardSpine2</Bones><CollisionRadius>0.2</CollisionRadius></BoneSet>
+        <BoneSet><Name>LizardTail1</Name><Bones>LizardPelvis LizardTail1</Bones><CollisionRadius>0.2</CollisionRadius></BoneSet>
+        <BoneSet><Name>LizardTail2</Name><Bones>LizardTail1 LizardTail2</Bones><CollisionRadius>0.2</CollisionRadius></BoneSet>
+        <BoneSet><Name>LizardTail3</Name><Bones>LizardTail2 LizardTail3</Bones><CollisionRadius>0.1</CollisionRadius></BoneSet>
+        <BoneSet><Name>LizardLRearLegCalf</Name><Bones>LizardLRearLegThigh LizardLRearLegCalf</Bones><CollisionRadius>0.2</CollisionRadius></BoneSet>
+        <BoneSet><Name>LizardLRearLegAnkle1</Name><Bones>LizardLRearLegCalf LizardLRearLegAnkle1</Bones><CollisionRadius>0.15</CollisionRadius></BoneSet>
+        <BoneSet><Name>LizardLRearLegAnkle2</Name><Bones>LizardLRearLegAnkle1 LizardLRearLegAnkle2</Bones><CollisionRadius>0.1</CollisionRadius></BoneSet>
+        <BoneSet><Name>LizardRRearLegCalf</Name><Bones>LizardRRearLegThigh LizardRRearLegCalf</Bones><CollisionRadius>0.2</CollisionRadius></BoneSet>
+        <BoneSet><Name>LizardRRearLegAnkle1</Name><Bones>LizardRRearLegCalf LizardRRearLegAnkle1</Bones><CollisionRadius>0.15</CollisionRadius></BoneSet>
+        <BoneSet><Name>LizardRRearLegAnkle2</Name><Bones>LizardRRearLegAnkle1 LizardRRearLegAnkle2</Bones><CollisionRadius>0.1</CollisionRadius></BoneSet>
+        <BoneSet><Name>LizardLFrontLegUpper</Name><Bones>LizardLFrontLegCollarbone LizardLFrontLegUpper</Bones><CollisionRadius>0.2</CollisionRadius></BoneSet>
+        <BoneSet><Name>LizardLFrontLegLower</Name><Bones>LizardLFrontLegUpper LizardLFrontLegLower</Bones><CollisionRadius>0.15</CollisionRadius></BoneSet>
+        <BoneSet><Name>LizardLFrontLegPalm1</Name><Bones>LizardLFrontLegLower LizardLFrontLegPalm1</Bones><CollisionRadius>0.1</CollisionRadius></BoneSet>
+        <BoneSet><Name>LizardLFrontLegPalm2</Name><Bones>LizardLFrontLegPalm1 LizardLFrontLegPalm2</Bones><CollisionRadius>0.1</CollisionRadius></BoneSet>
+        <BoneSet><Name>LizardRFrontLegUpper</Name><Bones>LizardRFrontLegCollarbone LizardRFrontLegUpper</Bones><CollisionRadius>0.2</CollisionRadius></BoneSet>
+        <BoneSet><Name>LizardRFrontLegLower</Name><Bones>LizardRFrontLegUpper LizardRFrontLegLower</Bones><CollisionRadius>0.15</CollisionRadius></BoneSet>
+        <BoneSet><Name>LizardRFrontLegPalm1</Name><Bones>LizardRFrontLegLower LizardRFrontLegPalm1</Bones><CollisionRadius>0.1</CollisionRadius></BoneSet>
+        <BoneSet><Name>LizardRFrontLegPalm2</Name><Bones>LizardRFrontLegPalm1 LizardRFrontLegPalm2</Bones><CollisionRadius>0.1</CollisionRadius></BoneSet>
+      </RagdollBonesMappings>
+
+      <InitialAnimation>Groump_Walk</InitialAnimation>
+
+      <DeadBodyShape>
+        <BoxShapeScale x="1" y="0.5" z="1"/>
+        <RelativeCenterOfMass x="0" y="0" z="0"/>
+        <RelativeShapeTranslation x="0" y="-0.7" z="0"/>
+        <Friction>20</Friction>
+      </DeadBodyShape>
+
+      <RotationToSupport>OneAxis</RotationToSupport>
+    </Character>
+
+  </Characters>
+</Definitions>

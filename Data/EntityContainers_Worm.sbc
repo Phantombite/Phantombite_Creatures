@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <EntityContainers>
+        
+
+
+
+        <Container>
+            <Id>
+                <TypeId>MyObjectBuilder_Character</TypeId>
+                <SubtypeId>Space_spider_worm</SubtypeId>
+            </Id>
+            <DefaultComponents>
+                <Component BuilderType="MyObjectBuilder_CharacterStatComponent" SubtypeId="Space_spider_worm" ForceCreate="true"/>
+            </DefaultComponents>
+        </Container>
+
+        <Container>
+            <Id>
+                <TypeId>MyObjectBuilder_Character</TypeId>
+                <SubtypeId>Space_spider_hugeworm</SubtypeId>
+            </Id>
+            <DefaultComponents>
+                <Component BuilderType="MyObjectBuilder_CharacterStatComponent" SubtypeId="Space_spider_hugeworm" ForceCreate="true"/>
+            </DefaultComponents>
+        </Container>
+
+
+
+    </EntityContainers>
+</Definitions>

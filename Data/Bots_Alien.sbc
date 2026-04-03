@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Bots>
+
+    <!-- Shark — Apex Predator -->
+    <Bot xsi:type="MyObjectBuilder_AnimalBotDefinition">
+      <Id><TypeId>MyObjectBuilder_AnimalBot</TypeId><SubtypeId>Shark</SubtypeId></Id>
+      <DisplayName>Shark</DisplayName>
+      <Icon>Textures\GUI\Icons\AstronautBackpack.dds</Icon>
+      <BotModel>Shark</BotModel>
+      <BotBehaviorTree Subtype="WolfBehavior" />
+      <BehaviorType>Wolf</BehaviorType>
+      <TargetType>Wolf</TargetType>
+      <Public>true</Public>
+      <AvailableInSurvival>false</AvailableInSurvival>
+      <RemoveAfterDeath>true</RemoveAfterDeath>
+      <InventoryContentGenerated>true</InventoryContentGenerated>
+      <InventoryContainerTypeId>
+        <TypeId>ContainerTypeDefinition</TypeId>
+        <SubtypeId>PB_CreatureLoot_Shark</SubtypeId>
+      </InventoryContainerTypeId>
+      <FactionTag>SPID</FactionTag>
+      <AttackLength>700</AttackLength>
+      <AttackRadius>3.0</AttackRadius>
+      <CharacterDamage>35</CharacterDamage>
+      <GridDamage>30</GridDamage>
+      <TargetGrids>false</TargetGrids>
+      <TargetCharacters>true</TargetCharacters>
+      <AttackSound>BeastGrowl</AttackSound>
+    </Bot>
+
+    <!-- Groump -->
+    <Bot xsi:type="MyObjectBuilder_AnimalBotDefinition">
+      <Id><TypeId>MyObjectBuilder_AnimalBot</TypeId><SubtypeId>Groump</SubtypeId></Id>
+      <DisplayName>Groump</DisplayName>
+      <Icon>Textures\GUI\Icons\AstronautBackpack.dds</Icon>
+      <BotModel>Groump</BotModel>
+      <BotBehaviorTree Subtype="WolfBehavior" />
+      <BehaviorType>Wolf</BehaviorType>
+      <TargetType>Wolf</TargetType>
+      <Public>true</Public>
+      <AvailableInSurvival>false</AvailableInSurvival>
+      <RemoveAfterDeath>true</RemoveAfterDeath>
+      <InventoryContentGenerated>true</InventoryContentGenerated>
+      <InventoryContainerTypeId>
+        <TypeId>ContainerTypeDefinition</TypeId>
+        <SubtypeId>PB_CreatureLoot_Groump</SubtypeId>
+      </InventoryContainerTypeId>
+      <FactionTag>SPID</FactionTag>
+      <AttackLength>700</AttackLength>
+      <AttackRadius>1.8</AttackRadius>
+      <CharacterDamage>28</CharacterDamage>
+      <GridDamage>10</GridDamage>
+      <TargetGrids>false</TargetGrids>
+      <TargetCharacters>true</TargetCharacters>
+      <AttackSound>BeastGrowl</AttackSound>
+    </Bot>
+
+    <!-- Raptor -->
+    <Bot xsi:type="MyObjectBuilder_AnimalBotDefinition">
+      <Id><TypeId>MyObjectBuilder_AnimalBot</TypeId><SubtypeId>Raptor</SubtypeId></Id>
+      <DisplayName>Raptor</DisplayName>
+      <Icon>Textures\GUI\Icons\AstronautBackpack.dds</Icon>
+      <BotModel>Raptor</BotModel>
+      <BotBehaviorTree Subtype="WolfBehavior" />
+      <BehaviorType>Wolf</BehaviorType>
+      <TargetType>Wolf</TargetType>
+      <Public>true</Public>
+      <AvailableInSurvival>false</AvailableInSurvival>
+      <RemoveAfterDeath>true</RemoveAfterDeath>
+      <InventoryContentGenerated>true</InventoryContentGenerated>
+      <InventoryContainerTypeId>
+        <TypeId>ContainerTypeDefinition</TypeId>
+        <SubtypeId>PB_CreatureLoot_Raptor</SubtypeId>
+      </InventoryContainerTypeId>
+      <FactionTag>SPID</FactionTag>
+      <AttackLength>700</AttackLength>
+      <AttackRadius>2.0</AttackRadius>
+      <CharacterDamage>35</CharacterDamage>
+      <GridDamage>15</GridDamage>
+      <TargetGrids>false</TargetGrids>
+      <TargetCharacters>true</TargetCharacters>
+      <AttackSound>BeastGrowl</AttackSound>
+    </Bot>
+
+    <!-- OrganicPlasma — Schwarm -->
+    <Bot xsi:type="MyObjectBuilder_AnimalBotDefinition">
+      <Id><TypeId>MyObjectBuilder_AnimalBot</TypeId><SubtypeId>OrganicPlasma</SubtypeId></Id>
+      <DisplayName>OrganicPlasma</DisplayName>
+      <Icon>Textures\GUI\Icons\AstronautBackpack.dds</Icon>
+      <BotModel>OrganicPlasma</BotModel>
+      <BotBehaviorTree Subtype="WolfBehavior" />
+      <BehaviorType>Wolf</BehaviorType>
+      <TargetType>Wolf</TargetType>
+      <Public>true</Public>
+      <AvailableInSurvival>false</AvailableInSurvival>
+      <RemoveAfterDeath>true</RemoveAfterDeath>
+      <InventoryContentGenerated>true</InventoryContentGenerated>
+      <InventoryContainerTypeId>
+        <TypeId>ContainerTypeDefinition</TypeId>
+        <SubtypeId>PB_CreatureLoot_OrganicPlasma</SubtypeId>
+      </InventoryContainerTypeId>
+      <FactionTag>SPID</FactionTag>
+      <AttackLength>700</AttackLength>
+      <AttackRadius>1.5</AttackRadius>
+      <CharacterDamage>19</CharacterDamage>
+      <GridDamage>8</GridDamage>
+      <TargetGrids>false</TargetGrids>
+      <TargetCharacters>true</TargetCharacters>
+      <AttackSound>BeastGrowl</AttackSound>
+    </Bot>
+
+  </Bots>
+</Definitions>

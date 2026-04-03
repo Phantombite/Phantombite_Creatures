@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+<Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Sounds>
+       <Sound>
+      <Id>
+        <TypeId>MyObjectBuilder_AudioDefinition</TypeId>
+        <SubtypeId>ArcBotPoof</SubtypeId>
+      </Id>
+      <Category>BOT</Category>
+      <MaxDistance>25</MaxDistance>
+      <Volume>4</Volume>
+      <PreventSynchronization>0</PreventSynchronization>
+      <SoundLimit>8</SoundLimit>
+      <Waves>
+        <Wave Type="D3">
+          <Start>Audio\ArcSquelch.wav</Start>
+        </Wave>
+      </Waves>
+    </Sound>
+
+    <Sound>
+      <Id>
+        <TypeId>MyObjectBuilder_AudioDefinition</TypeId>
+        <SubtypeId>RealBotPoof</SubtypeId>
+      </Id>
+      <Category>BOT</Category>
+      <MaxDistance>8</MaxDistance>
+      <Volume>4</Volume>
+      <PreventSynchronization>0</PreventSynchronization>
+      <SoundLimit>8</SoundLimit>
+      <Waves>
+        <Wave Type="D3">
+          <Start>Audio\ArcSquelch.wav</Start>
+        </Wave>
+
+      </Waves>
+    </Sound>
+
+       <Sound>
+      <Id>
+        <TypeId>MyObjectBuilder_AudioDefinition</TypeId>
+        <SubtypeId>ArcBotBeast</SubtypeId>
+      </Id>
+      <Category>BOT</Category>
+      <MaxDistance>25</MaxDistance>
+      <Volume>4</Volume>
+      <PreventSynchronization>0</PreventSynchronization>
+      <SoundLimit>8</SoundLimit>
+      <Waves>
+        <Wave Type="D3">
+          <Start>Audio\ArcBeast.wav</Start>
+        </Wave>
+      </Waves>
+    </Sound>
+
+    <Sound>
+      <Id>
+        <TypeId>MyObjectBuilder_AudioDefinition</TypeId>
+        <SubtypeId>RealBotBeast</SubtypeId>
+      </Id>
+      <Category>BOT</Category>
+      <MaxDistance>8</MaxDistance>
+      <Volume>4</Volume>
+      <PreventSynchronization>0</PreventSynchronization>
+      <SoundLimit>8</SoundLimit>
+      <Waves>
+        <Wave Type="D3">
+          <Start>Audio\ArcBeast.wav</Start>
+        </Wave>
+
+      </Waves>
+    </Sound>
+
+           <Sound>
+      <Id>
+        <TypeId>MyObjectBuilder_AudioDefinition</TypeId>
+        <SubtypeId>ArcBeastGrowl</SubtypeId>
+      </Id>
+      <Category>BOT</Category>
+      <MaxDistance>25</MaxDistance>
+      <Volume>1</Volume>
+      <PreventSynchronization>0</PreventSynchronization>
+      <SoundLimit>8</SoundLimit>
+      <Waves>
+
+     <Wave Type="D3">
+          <Start>Audio\Beast01.wav</Start>
+      </Wave>
+      <Wave Type="D3">
+          <Start>Audio\Beast02.wav</Start>
+      </Wave>
+      <Wave Type="D3">
+          <Start>Audio\Beast03.wav</Start>
+      </Wave>
+      
+      </Waves>
+    </Sound>
+
+    <Sound>
+      <Id>
+        <TypeId>MyObjectBuilder_AudioDefinition</TypeId>
+        <SubtypeId>RealBeastGrowl</SubtypeId>
+      </Id>
+      <Category>BOT</Category>
+      <MaxDistance>8</MaxDistance>
+      <Volume>1</Volume>
+      <PreventSynchronization>0</PreventSynchronization>
+      <SoundLimit>8</SoundLimit>
+      <Waves>
+      
+     <Wave Type="D3">
+          <Start>Audio\Beast01.wav</Start>
+      </Wave>
+      <Wave Type="D3">
+          <Start>Audio\Beast02.wav</Start>
+      </Wave>
+      <Wave Type="D3">
+          <Start>Audio\Beast03.wav</Start>
+      </Wave>
+
+      </Waves>
+    </Sound>
+
+   <Sound>
+      <Id>
+        <TypeId>MyObjectBuilder_AudioDefinition</TypeId>
+        <SubtypeId>ArcBotBeastWalk</SubtypeId>
+      </Id>
+      <Category>BOT</Category>
+      <MaxDistance>35</MaxDistance>
+
+      <Volume>1.5</Volume>
+      <Loopable>true</Loopable>
+ 
+      <Waves>
+        <Wave Type="D3">
+          <Start>Audio\BeastWalk01.wav</Start>
+      </Wave>
+      <!--<Wave Type="D3">
+          <Start>Audio\BeastWalk02.wav</Start>
+      </Wave>-->
+      </Waves>
+    </Sound>
+
+   <Sound>
+      <Id>
+        <TypeId>MyObjectBuilder_AudioDefinition</TypeId>
+        <SubtypeId>RealBotBeastWalk</SubtypeId>
+      </Id>
+      <Category>BOT</Category>
+      <MaxDistance>15</MaxDistance>
+
+      <Volume>1</Volume>
+      <Loopable>true</Loopable>
+
+      <Waves>
+        <Wave Type="D3">
+          <Start>Audio\BeastWalk01.wav</Start>
+      </Wave>
+      <!--<Wave Type="D3">
+          <Start>Audio\BeastWalk02.wav</Start>
+      </Wave>-->
+      </Waves>
+    </Sound>
+
+<!-- for when the attack sound can be modified
+    <Sound>
+      <Id>
+        <TypeId>MyObjectBuilder_AudioDefinition</TypeId>
+        <SubtypeId>ArcBotWolfAttack</SubtypeId>
+      </Id>
+      <Category>BOT</Category>
+      <MaxDistance>40</MaxDistance>
+      <Volume>0.5</Volume>
+      <PitchVariation>150</PitchVariation>
+      <VolumeVariation>0.1</VolumeVariation>
+      <Loopable>false</Loopable>
+      <SoundLimit>3</SoundLimit>
+      <PreventSynchronization>10</PreventSynchronization>
+      <Waves>
+        <Wave Type="D3">
+          <Start>ARC\SHIP_SYS\ArcEmpty3d.wav</Start>
+        </Wave>
+      </Waves>
+    </Sound>-->
+  
+  </Sounds>
+</Definitions>

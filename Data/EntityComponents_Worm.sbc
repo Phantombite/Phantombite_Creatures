@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <EntityComponents>
+
+  
+        <EntityComponent xsi:type="MyObjectBuilder_EntityStatComponentDefinition">
+            <Id>
+                <TypeId>CharacterStatComponent</TypeId>
+                <SubtypeId>Space_spider_worm</SubtypeId>
+            </Id>
+            <Stats>
+                <Stat>
+                    <TypeId>MyObjectBuilder_EntityStat</TypeId>
+                    <SubtypeId>WormHealth</SubtypeId>
+                </Stat>
+            </Stats>
+            <Scripts>
+                <Script>SpaceStatEffect</Script>
+            </Scripts>
+        </EntityComponent>
+
+        <EntityComponent xsi:type="MyObjectBuilder_EntityStatComponentDefinition">
+            <Id>
+                <TypeId>CharacterStatComponent</TypeId>
+                <SubtypeId>Space_spider_hugeworm</SubtypeId>
+            </Id>
+            <Stats>
+                <Stat>
+                    <TypeId>MyObjectBuilder_EntityStat</TypeId>
+                    <SubtypeId>HugeWormHealth</SubtypeId>
+                </Stat>
+            </Stats>
+            <Scripts>
+                <Script>SpaceStatEffect</Script>
+            </Scripts>
+        </EntityComponent>
+
+    </EntityComponents>
+
+</Definitions>

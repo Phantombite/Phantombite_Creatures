@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <StatDefinitions>
+
+    <!-- Shark — Apex Predator -->
+    <Stat xsi:type="MyObjectBuilder_EntityStatDefinition">
+      <Id><TypeId>MyObjectBuilder_EntityStat</TypeId><SubtypeId>Shark_Health</SubtypeId></Id>
+      <n>Health</n>
+      <MinValue>0</MinValue>
+      <DefaultValue>4000</DefaultValue>
+      <MaxValue>4000</MaxValue>
+    </Stat>
+
+    <!-- Groump -->
+    <Stat xsi:type="MyObjectBuilder_EntityStatDefinition">
+      <Id><TypeId>MyObjectBuilder_EntityStat</TypeId><SubtypeId>Groump_Health</SubtypeId></Id>
+      <n>Health</n>
+      <MinValue>0</MinValue>
+      <DefaultValue>1500</DefaultValue>
+      <MaxValue>1500</MaxValue>
+    </Stat>
+
+    <!-- Raptor -->
+    <Stat xsi:type="MyObjectBuilder_EntityStatDefinition">
+      <Id><TypeId>MyObjectBuilder_EntityStat</TypeId><SubtypeId>Raptor_Health</SubtypeId></Id>
+      <n>Health</n>
+      <MinValue>0</MinValue>
+      <DefaultValue>400</DefaultValue>
+      <MaxValue>400</MaxValue>
+    </Stat>
+
+    <!-- OrganicPlasma -->
+    <Stat xsi:type="MyObjectBuilder_EntityStatDefinition">
+      <Id><TypeId>MyObjectBuilder_EntityStat</TypeId><SubtypeId>OrganicPlasma_Health</SubtypeId></Id>
+      <n>Health</n>
+      <MinValue>0</MinValue>
+      <DefaultValue>50</DefaultValue>
+      <MaxValue>50</MaxValue>
+    </Stat>
+
+  </StatDefinitions>
+</Definitions>

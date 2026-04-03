@@ -1,0 +1,227 @@
+<?xml version="1.0"?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Characters>
+
+    <!-- Raptor -->
+    <Character>
+      <Id>
+        <TypeId>MyObjectBuilder_Character</TypeId>
+        <SubtypeId>Raptor</SubtypeId>
+      </Id>
+
+      <Name>Raptor</Name>
+      <AnimationController>Raptor_Temp</AnimationController>
+      <Model>Models\Characters\Raptor.mwm</Model>
+
+      <DeathSoundName>ArcBotSpiderDeath</DeathSoundName>
+      <LoopingFootsteps>true</LoopingFootsteps>
+      <PhysicalMaterial>Wolf</PhysicalMaterial>
+      <Mass>30</Mass>
+
+      <Skeleton>Tetrapod_simple</Skeleton>
+      <SpineBone>Creature_Spine3</SpineBone>
+      <EnableFirstPersonView>false</EnableFirstPersonView>
+
+      <AnimationMappings>
+        <!-- kein Idle vorhanden — Walk als Fallback -->
+        <Mapping Name="Idle"   AnimationSubtypeName="Raptor_Walk" />
+        <Mapping Name="Run"    AnimationSubtypeName="Raptor_Walk" />
+        <Mapping Name="Walk"   AnimationSubtypeName="Raptor_Walk" />
+        <Mapping Name="Attack" AnimationSubtypeName="Raptor_Attack" />
+        <Mapping Name="Died"   AnimationSubtypeName="Raptor_Death" />
+      </AnimationMappings>
+
+      <UsableByPlayer>false</UsableByPlayer>
+      <VisibleOnHud>false</VisibleOnHud>
+
+      <Inventory>
+        <InventoryVolume>1</InventoryVolume>
+        <InventoryMass>50</InventoryMass>
+      </Inventory>
+
+      <MaxHealth>200</MaxHealth>
+
+      <EnabledComponents>RagdollComponent</EnabledComponents>
+      <EnableSpawnInventoryAsContainer>false</EnableSpawnInventoryAsContainer>
+      <SpawnInventoryOnBodyRemoval>true</SpawnInventoryOnBodyRemoval>
+
+      <LootingTime>30</LootingTime>
+      <UsesAtmosphereDetector>true</UsesAtmosphereDetector>
+      <UsesReverbDetector>true</UsesReverbDetector>
+
+      <!-- BONES -->
+      <HeadBone>Creature_Scull</HeadBone>
+      <ModelRootBoneName>Dummy001</ModelRootBoneName>
+
+      <VerticalPositionFlyingOnly>false</VerticalPositionFlyingOnly>
+      <UseOnlyWalking>false</UseOnlyWalking>
+
+      <MaxSlope>80</MaxSlope>
+      <MaxSprintSpeed>11.6</MaxSprintSpeed>
+      <MaxRunSpeed>8</MaxRunSpeed>
+      <MaxBackrunSpeed>4</MaxBackrunSpeed>
+      <MaxRunStrafingSpeed>0</MaxRunStrafingSpeed>
+      <MaxWalkSpeed>5</MaxWalkSpeed>
+      <MaxBackwalkSpeed>1</MaxBackwalkSpeed>
+      <MaxWalkStrafingSpeed>0</MaxWalkStrafingSpeed>
+      <MaxCrouchWalkSpeed>1</MaxCrouchWalkSpeed>
+      <MaxCrouchBackwalkSpeed>1</MaxCrouchBackwalkSpeed>
+      <MaxCrouchStrafingSpeed>0</MaxCrouchStrafingSpeed>
+
+      <CharacterHeadSize>0.35</CharacterHeadSize>
+      <CharacterHeadHeight>0.15</CharacterHeadHeight>
+      <CharacterCollisionScale>0.7</CharacterCollisionScale>
+
+      <MaxForce>500</MaxForce>
+
+      <BoneSet>
+        <Name>Body</Name>
+      </BoneSet>
+
+      <RagdollBonesMappings>
+        <BoneSet><Name>Creature_Scull</Name><Bones>Creature_Scull Creature_Jaw</Bones><CollisionRadius>0.25</CollisionRadius></BoneSet>
+        <BoneSet><Name>Creature_Neck2</Name><Bones>Creature_Scull Creature_Neck2</Bones><CollisionRadius>0.25</CollisionRadius></BoneSet>
+        <BoneSet><Name>Creature_Neck1</Name><Bones>Creature_Neck2 Creature_Neck1</Bones><CollisionRadius>0.2</CollisionRadius></BoneSet>
+        <BoneSet><Name>Creature_Ribcage</Name><Bones>Creature_Ribcage Creature_Spine6 Creature_Spine3</Bones><CollisionRadius>0.2</CollisionRadius></BoneSet>
+        <BoneSet><Name>Creature_Tail1</Name><Bones>Creature_Pelvis Creature_Tail1</Bones><CollisionRadius>0.2</CollisionRadius></BoneSet>
+        <BoneSet><Name>Creature_Tail2</Name><Bones>Creature_Tail1 Creature_Tail2</Bones><CollisionRadius>0.2</CollisionRadius></BoneSet>
+        <BoneSet><Name>Creature_Tail3</Name><Bones>Creature_Tail2 Creature_Tail3</Bones><CollisionRadius>0.1</CollisionRadius></BoneSet>
+        <BoneSet><Name>Creature_LLargeCannon</Name><Bones>Creature_LTibia Creature_LLargeCannon</Bones><CollisionRadius>0.2</CollisionRadius></BoneSet>
+        <BoneSet><Name>Creature_LPhalanxPrima</Name><Bones>Creature_LLargeCannon Creature_LPhalanxPrima</Bones><CollisionRadius>0.1</CollisionRadius></BoneSet>
+        <BoneSet><Name>Creature_LRearHoof</Name><Bones>Creature_LPhalanxPrima Creature_LRearHoof</Bones><CollisionRadius>0.1</CollisionRadius></BoneSet>
+        <BoneSet><Name>Creature_RLargeCannon</Name><Bones>Creature_RTibia Creature_RLargeCannon</Bones><CollisionRadius>0.2</CollisionRadius></BoneSet>
+        <BoneSet><Name>Creature_RPhalanxPrima</Name><Bones>Creature_RLargeCannon Creature_RPhalanxPrima</Bones><CollisionRadius>0.1</CollisionRadius></BoneSet>
+        <BoneSet><Name>Creature_RRearHoof</Name><Bones>Creature_RPhalanxPrima Creature_RRearHoof</Bones><CollisionRadius>0.1</CollisionRadius></BoneSet>
+        <BoneSet><Name>Creature_LHumerus</Name><Bones>Creature_LScapula Creature_LHumerus</Bones><CollisionRadius>0.2</CollisionRadius></BoneSet>
+        <BoneSet><Name>Creature_LRadius</Name><Bones>Creature_LHumerus Creature_LRadius</Bones><CollisionRadius>0.1</CollisionRadius></BoneSet>
+        <BoneSet><Name>Creature_LMetacarpus</Name><Bones>Creature_LRadius Creature_LMetacarpus</Bones><CollisionRadius>0.05</CollisionRadius></BoneSet>
+        <BoneSet><Name>Creature_LFrontHoof</Name><Bones>Creature_LMetacarpus Creature_LPhalangesManus Creature_LFrontHoof</Bones><CollisionRadius>0.05</CollisionRadius></BoneSet>
+        <BoneSet><Name>Creature_RHumerus</Name><Bones>Creature_RScapula Creature_RHumerus</Bones><CollisionRadius>0.2</CollisionRadius></BoneSet>
+        <BoneSet><Name>Creature_RRadius</Name><Bones>Creature_RHumerus Creature_RRadius</Bones><CollisionRadius>0.1</CollisionRadius></BoneSet>
+        <BoneSet><Name>Creature_RMetacarpus</Name><Bones>Creature_RRadius Creature_RMetacarpus</Bones><CollisionRadius>0.05</CollisionRadius></BoneSet>
+        <BoneSet><Name>Creature_RFrontHoof</Name><Bones>Creature_RMetacarpus Creature_RPhalangesManus Creature_RFrontHoof</Bones><CollisionRadius>0.05</CollisionRadius></BoneSet>
+      </RagdollBonesMappings>
+
+      <InitialAnimation>Raptor_Walk</InitialAnimation>
+
+      <DeadBodyShape>
+        <BoxShapeScale x="1" y="0.15" z="2"/>
+        <RelativeCenterOfMass x="0" y="0" z="0"/>
+        <RelativeShapeTranslation x="0" y="-0.7" z="0"/>
+        <Friction>20</Friction>
+      </DeadBodyShape>
+
+      <RotationToSupport>OneAxis</RotationToSupport>
+    </Character>
+
+    <!-- OrganicPlasma -->
+    <Character>
+      <Id>
+        <TypeId>MyObjectBuilder_Character</TypeId>
+        <SubtypeId>OrganicPlasma</SubtypeId>
+      </Id>
+
+      <Name>OrganicPlasma</Name>
+      <AnimationController>AC_OrganicPlasma</AnimationController>
+      <Model>Models\Characters\OrganicPlasma.mwm</Model>
+
+      <DeathSoundName>BotPoof</DeathSoundName>
+      <LoopingFootsteps>true</LoopingFootsteps>
+      <PhysicalMaterial>OrganicPlasma</PhysicalMaterial>
+      <Mass>30</Mass>
+
+      <Skeleton>Tetrapod_simple</Skeleton>
+      <SpineBone>MonsterSpine</SpineBone>
+      <EnableFirstPersonView>false</EnableFirstPersonView>
+
+      <AnimationMappings>
+        <!-- kein Idle vorhanden — Walk als Fallback -->
+        <Mapping Name="Idle"   AnimationSubtypeName="OrganicPlasma_Walk" />
+        <Mapping Name="Run"    AnimationSubtypeName="OrganicPlasma_Walk" />
+        <Mapping Name="Walk"   AnimationSubtypeName="OrganicPlasma_Walk" />
+        <Mapping Name="Attack" AnimationSubtypeName="OrganicPlasma_Attack" />
+        <Mapping Name="Died"   AnimationSubtypeName="OrganicPlasma_Death" />
+      </AnimationMappings>
+
+      <UsableByPlayer>false</UsableByPlayer>
+      <VisibleOnHud>false</VisibleOnHud>
+
+      <Inventory>
+        <InventoryVolume>1</InventoryVolume>
+        <InventoryMass>50</InventoryMass>
+      </Inventory>
+
+      <MaxHealth>200</MaxHealth>
+
+      <EnabledComponents>RagdollComponent</EnabledComponents>
+      <EnableSpawnInventoryAsContainer>false</EnableSpawnInventoryAsContainer>
+      <SpawnInventoryOnBodyRemoval>true</SpawnInventoryOnBodyRemoval>
+
+      <LootingTime>0.15</LootingTime>
+      <UsesAtmosphereDetector>true</UsesAtmosphereDetector>
+      <UsesReverbDetector>true</UsesReverbDetector>
+
+      <!-- BONES -->
+      <HeadBone>MonsterHub001</HeadBone>
+      <ModelRootBoneName>MonsterHub</ModelRootBoneName>
+
+      <VerticalPositionFlyingOnly>false</VerticalPositionFlyingOnly>
+      <UseOnlyWalking>false</UseOnlyWalking>
+
+      <MaxSlope>60</MaxSlope>
+      <MaxSprintSpeed>10</MaxSprintSpeed>
+      <MaxRunSpeed>12</MaxRunSpeed>
+      <MaxBackrunSpeed>8</MaxBackrunSpeed>
+      <MaxRunStrafingSpeed>8</MaxRunStrafingSpeed>
+      <MaxWalkSpeed>8</MaxWalkSpeed>
+      <MaxBackwalkSpeed>8</MaxBackwalkSpeed>
+      <MaxWalkStrafingSpeed>8</MaxWalkStrafingSpeed>
+      <MaxCrouchWalkSpeed>8</MaxCrouchWalkSpeed>
+      <MaxCrouchBackwalkSpeed>8</MaxCrouchBackwalkSpeed>
+      <MaxCrouchStrafingSpeed>8</MaxCrouchStrafingSpeed>
+
+      <CharacterHeadSize>0</CharacterHeadSize>
+      <CharacterHeadHeight>0</CharacterHeadHeight>
+      <CharacterCollisionScale>1</CharacterCollisionScale>
+      <CharacterCollisionHeight>1.5</CharacterCollisionHeight>
+      <CharacterCollisionWidth>1.5</CharacterCollisionWidth>
+
+      <MaxForce>500</MaxForce>
+
+      <BoneSet>
+        <Name>Body</Name>
+      </BoneSet>
+
+      <RagdollBonesMappings>
+        <BoneSet><Name>MonsterHub001</Name><Bones>MonsterHub001 MonsterSpine</Bones><CollisionRadius>0.25</CollisionRadius></BoneSet>
+        <BoneSet><Name>MonsterHub</Name><Bones>MonsterHub001 MonsterHub</Bones><CollisionRadius>0.25</CollisionRadius></BoneSet>
+        <BoneSet><Name>MonsterLLeg11</Name><Bones>MonsterLLeg12 MonsterLLeg11</Bones><CollisionRadius>0.2</CollisionRadius></BoneSet>
+        <BoneSet><Name>MonsterLLeg12</Name><Bones>MonsterLLeg11 MonsterLLeg13</Bones><CollisionRadius>0.1</CollisionRadius></BoneSet>
+        <BoneSet><Name>MonsterLLeg13</Name><Bones>MonsterLLeg14 MonsterLLeg13</Bones><CollisionRadius>0.1</CollisionRadius></BoneSet>
+        <BoneSet><Name>MonsterLLeg31</Name><Bones>MonsterLLeg32 MonsterLLeg31</Bones><CollisionRadius>0.2</CollisionRadius></BoneSet>
+        <BoneSet><Name>MonsterLLeg32</Name><Bones>MonsterLLeg31 MonsterLLeg33</Bones><CollisionRadius>0.1</CollisionRadius></BoneSet>
+        <BoneSet><Name>MonsterLLeg33</Name><Bones>MonsterLLeg35 MonsterLLeg34 MonsterLLeg33</Bones><CollisionRadius>0.1</CollisionRadius></BoneSet>
+        <BoneSet><Name>MonsterLLeg41</Name><Bones>MonsterLLeg42 MonsterLLeg41</Bones><CollisionRadius>0.2</CollisionRadius></BoneSet>
+        <BoneSet><Name>MonsterLLeg42</Name><Bones>MonsterLLeg41 MonsterLLeg43</Bones><CollisionRadius>0.1</CollisionRadius></BoneSet>
+        <BoneSet><Name>MonsterRLeg11</Name><Bones>MonsterRLeg12 MonsterRLeg11</Bones><CollisionRadius>0.2</CollisionRadius></BoneSet>
+        <BoneSet><Name>MonsterRLeg12</Name><Bones>MonsterRLeg11 MonsterRLeg13</Bones><CollisionRadius>0.1</CollisionRadius></BoneSet>
+        <BoneSet><Name>MonsterRLeg31</Name><Bones>MonsterRLeg32 MonsterRLeg31</Bones><CollisionRadius>0.2</CollisionRadius></BoneSet>
+        <BoneSet><Name>MonsterRLeg32</Name><Bones>MonsterRLeg31 MonsterRLeg33</Bones><CollisionRadius>0.1</CollisionRadius></BoneSet>
+        <BoneSet><Name>MonsterRLeg41</Name><Bones>MonsterRLeg42 MonsterRLeg41</Bones><CollisionRadius>0.2</CollisionRadius></BoneSet>
+        <BoneSet><Name>MonsterRLeg42</Name><Bones>MonsterRLeg41 MonsterRLeg43</Bones><CollisionRadius>0.1</CollisionRadius></BoneSet>
+      </RagdollBonesMappings>
+
+      <InitialAnimation>OrganicPlasma_Walk</InitialAnimation>
+
+      <DeadBodyShape>
+        <BoxShapeScale x="0.5" y="0.15" z="0.5"/>
+        <RelativeCenterOfMass x="0" y="0" z="0"/>
+        <RelativeShapeTranslation x="0" y="-0.7" z="0"/>
+        <Friction>20</Friction>
+      </DeadBodyShape>
+
+      <RotationToSupport>OneAxis</RotationToSupport>
+    </Character>
+
+  </Characters>
+</Definitions>

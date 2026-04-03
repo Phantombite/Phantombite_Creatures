@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <StatDefinitions>
+
+    <!-- Worm -->
+    <Stat xsi:type="MyObjectBuilder_EntityStatDefinition">
+      <Id><TypeId>MyObjectBuilder_EntityStat</TypeId><SubtypeId>WormHealth</SubtypeId></Id>
+      <n>Health</n>
+      <MinValue>0</MinValue>
+      <DefaultValue>300</DefaultValue>
+      <MaxValue>300</MaxValue>
+    </Stat>
+
+    <!-- HugeWorm -->
+    <Stat xsi:type="MyObjectBuilder_EntityStatDefinition">
+      <Id><TypeId>MyObjectBuilder_EntityStat</TypeId><SubtypeId>HugeWormHealth</SubtypeId></Id>
+      <n>Health</n>
+      <MinValue>0</MinValue>
+      <DefaultValue>3000</DefaultValue>
+      <MaxValue>3000</MaxValue>
+    </Stat>
+
+  </StatDefinitions>
+</Definitions>

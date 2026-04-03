@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SpawnGroups>
+
+    <!-- Shark — selten, Apex, nur nachts -->
+    <SpawnGroup>
+      <Id><TypeId>SpawnGroupDefinition</TypeId><SubtypeId>PB-Creature-Shark</SubtypeId></Id>
+      <Description>
+        [Modular Encounters SpawnGroup]
+        [AdminSpawnOnly:false]
+        [PlanetWhitelist:Sulvax]
+        [IgnoreCleanupRules:true]
+        [CreatureSpawn:true]
+        [CreatureIds:Shark]
+        [UseDayOrNightOnly:true]
+        [SpawnOnlyAtNight:true]
+        [MinCreatureCount:1]
+        [MaxCreatureCount:2]
+        [MinCreatureDistance:100]
+        [MaxCreatureDistance:400]
+      </Description>
+      <IsPirate>true</IsPirate>
+      <Frequency>3.0</Frequency>
+      <Prefabs>
+        <Prefab SubtypeId="MES-CreaturePrefabDummy">
+          <Position><X>0.0</X><Y>0.0</Y><Z>0.0</Z></Position>
+          <Speed>25</Speed><Behaviour></Behaviour>
+        </Prefab>
+      </Prefabs>
+    </SpawnGroup>
+
+    <!-- Groump — mittel, nur nachts -->
+    <SpawnGroup>
+      <Id><TypeId>SpawnGroupDefinition</TypeId><SubtypeId>PB-Creature-Groump</SubtypeId></Id>
+      <Description>
+        [Modular Encounters SpawnGroup]
+        [AdminSpawnOnly:false]
+        [PlanetWhitelist:Sulvax]
+        [IgnoreCleanupRules:true]
+        [CreatureSpawn:true]
+        [CreatureIds:Groump]
+        [UseDayOrNightOnly:true]
+        [SpawnOnlyAtNight:true]
+        [MinCreatureCount:3]
+        [MaxCreatureCount:8]
+        [MinCreatureDistance:80]
+        [MaxCreatureDistance:350]
+      </Description>
+      <IsPirate>true</IsPirate>
+      <Frequency>8.0</Frequency>
+      <Prefabs>
+        <Prefab SubtypeId="MES-CreaturePrefabDummy">
+          <Position><X>0.0</X><Y>0.0</Y><Z>0.0</Z></Position>
+          <Speed>25</Speed><Behaviour></Behaviour>
+        </Prefab>
+      </Prefabs>
+    </SpawnGroup>
+
+    <!-- Raptor — häufig, nur nachts -->
+    <SpawnGroup>
+      <Id><TypeId>SpawnGroupDefinition</TypeId><SubtypeId>PB-Creature-Raptor</SubtypeId></Id>
+      <Description>
+        [Modular Encounters SpawnGroup]
+        [AdminSpawnOnly:false]
+        [PlanetWhitelist:Sulvax]
+        [IgnoreCleanupRules:true]
+        [CreatureSpawn:true]
+        [CreatureIds:Raptor]
+        [UseDayOrNightOnly:true]
+        [SpawnOnlyAtNight:true]
+        [MinCreatureCount:2]
+        [MaxCreatureCount:4]
+        [MinCreatureDistance:100]
+        [MaxCreatureDistance:400]
+      </Description>
+      <IsPirate>true</IsPirate>
+      <Frequency>6.0</Frequency>
+      <Prefabs>
+        <Prefab SubtypeId="MES-CreaturePrefabDummy">
+          <Position><X>0.0</X><Y>0.0</Y><Z>0.0</Z></Position>
+          <Speed>25</Speed><Behaviour></Behaviour>
+        </Prefab>
+      </Prefabs>
+    </SpawnGroup>
+
+    <!-- OrganicPlasma — Schwarm, immer -->
+    <SpawnGroup>
+      <Id><TypeId>SpawnGroupDefinition</TypeId><SubtypeId>PB-Creature-OrganicPlasma</SubtypeId></Id>
+      <Description>
+        [Modular Encounters SpawnGroup]
+        [AdminSpawnOnly:false]
+        [PlanetWhitelist:Sulvax]
+        [IgnoreCleanupRules:true]
+        [CreatureSpawn:true]
+        [CreatureIds:OrganicPlasma]
+        [MinCreatureCount:10]
+        [MaxCreatureCount:20]
+        [MinCreatureDistance:100]
+        [MaxCreatureDistance:400]
+      </Description>
+      <IsPirate>true</IsPirate>
+      <Frequency>10.0</Frequency>
+      <Prefabs>
+        <Prefab SubtypeId="MES-CreaturePrefabDummy">
+          <Position><X>0.0</X><Y>0.0</Y><Z>0.0</Z></Position>
+          <Speed>25</Speed><Behaviour></Behaviour>
+        </Prefab>
+      </Prefabs>
+    </SpawnGroup>
+
+  </SpawnGroups>
+</Definitions>

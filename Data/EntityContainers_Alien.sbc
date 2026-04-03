@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <EntityContainers>
+
+    <Container>
+      <Id>
+        <TypeId>MyObjectBuilder_Character</TypeId>
+        <SubtypeId>Shark</SubtypeId>
+      </Id>
+      <DefaultComponents>
+        <Component BuilderType="MyObjectBuilder_CharacterStatComponent" SubtypeId="Shark" ForceCreate="true"/>
+      </DefaultComponents>
+    </Container>
+
+    <Container>
+      <Id>
+        <TypeId>MyObjectBuilder_Character</TypeId>
+        <SubtypeId>Raptor</SubtypeId>
+      </Id>
+      <DefaultComponents>
+        <Component BuilderType="MyObjectBuilder_CharacterStatComponent" SubtypeId="Raptor" ForceCreate="true"/>
+      </DefaultComponents>
+    </Container>
+
+    <Container>
+      <Id>
+        <TypeId>MyObjectBuilder_Character</TypeId>
+        <SubtypeId>OrganicPlasma</SubtypeId>
+      </Id>
+      <DefaultComponents>
+        <Component BuilderType="MyObjectBuilder_CharacterStatComponent" SubtypeId="OrganicPlasma" ForceCreate="true"/>
+      </DefaultComponents>
+    </Container>
+
+    <Container>
+      <Id>
+        <TypeId>MyObjectBuilder_Character</TypeId>
+        <SubtypeId>Groump</SubtypeId>
+      </Id>
+      <DefaultComponents>
+        <Component BuilderType="MyObjectBuilder_CharacterStatComponent" SubtypeId="Groump" ForceCreate="true"/>
+      </DefaultComponents>
+    </Container>
+
+  </EntityContainers>
+</Definitions>

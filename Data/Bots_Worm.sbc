@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Bots>
+        <Bot xsi:type="MyObjectBuilder_AnimalBotDefinition">
+            <Id>
+                <TypeId>MyObjectBuilder_AnimalBot</TypeId>
+                <SubtypeId>Space_spider_worm</SubtypeId>
+            </Id>
+            <DisplayName>DisplayName_Bots_Deer</DisplayName>
+            <Icon>Textures\GUI\Icons\AstronautBackpack.dds</Icon>
+            <BotModel>Space_spider_worm</BotModel>
+            <BotBehaviorTree Subtype="SpiderBehavior" />
+            <!-- Which behavior tree to use -->
+            <BehaviorType>Spider</BehaviorType>
+            <!-- Which actions (and logic) class to use -->
+            <TargetType>Spider</TargetType>
+            <Public>true</Public>
+            <AvailableInSurvival>false</AvailableInSurvival>
+            <RemoveAfterDeath>true</RemoveAfterDeath>
+            <InventoryContentGenerated>true</InventoryContentGenerated>
+            <InventoryContainerTypeId>
+                <TypeId>ContainerTypeDefinition</TypeId>
+                <SubtypeId>PB_CreatureLoot_Worm</SubtypeId>
+            </InventoryContainerTypeId>
+            <FactionTag>SPID</FactionTag>
+            <AttackLength>700</AttackLength>
+            <AttackRadius>1.5</AttackRadius>
+            <CharacterDamage>35</CharacterDamage>
+            <GridDamage>20</GridDamage>
+            <TargetGrids>false</TargetGrids>
+            <TargetCharacters>true</TargetCharacters>
+            <AttackSound>ArcWorm_Attack</AttackSound>
+        </Bot>
+
+
+        <Bot xsi:type="MyObjectBuilder_AnimalBotDefinition">
+            <Id>
+                <TypeId>MyObjectBuilder_AnimalBot</TypeId>
+                <SubtypeId>Space_spider_hugeworm</SubtypeId>
+            </Id>
+            <DisplayName>DisplayName_Bots_Deer</DisplayName>
+            <Icon>Textures\GUI\Icons\AstronautBackpack.dds</Icon>
+            <BotModel>Space_spider_hugeworm</BotModel>
+            <BotBehaviorTree Subtype="SpiderBehavior" />
+            <!-- Which behavior tree to use -->
+            <BehaviorType>Spider</BehaviorType>
+            <!-- Which actions (and logic) class to use -->
+            <TargetType>Spider</TargetType>
+            <Public>false</Public>
+            <AvailableInSurvival>false</AvailableInSurvival>
+            <RemoveAfterDeath>true</RemoveAfterDeath>
+            <InventoryContentGenerated>true</InventoryContentGenerated>
+            <InventoryContainerTypeId>
+                <TypeId>ContainerTypeDefinition</TypeId>
+                <SubtypeId>PB_CreatureLoot_HugeWorm</SubtypeId>
+            </InventoryContainerTypeId>
+            <FactionTag>SPID</FactionTag>
+            <AttackLength>700</AttackLength>
+            <AttackRadius>3.0</AttackRadius>
+            <CharacterDamage>50</CharacterDamage>
+            <GridDamage>30</GridDamage>
+            <TargetGrids>false</TargetGrids>
+            <TargetCharacters>true</TargetCharacters>
+            <AttackSound>ArcWorm_Attack</AttackSound>
+        </Bot>
+
+
+    </Bots>
+</Definitions>

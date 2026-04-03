@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <EntityComponents>
+
+    <EntityComponent xsi:type="MyObjectBuilder_EntityStatComponentDefinition">
+      <Id>
+        <TypeId>CharacterStatComponent</TypeId>
+        <SubtypeId>Shark</SubtypeId>
+      </Id>
+      <Stats>
+        <Stat>
+          <TypeId>MyObjectBuilder_EntityStat</TypeId>
+          <SubtypeId>Shark_Health</SubtypeId>
+        </Stat>
+      </Stats>
+      <Scripts>
+        <Script>SpaceStatEffect</Script>
+      </Scripts>
+    </EntityComponent>
+
+    <EntityComponent xsi:type="MyObjectBuilder_EntityStatComponentDefinition">
+      <Id>
+        <TypeId>CharacterStatComponent</TypeId>
+        <SubtypeId>Raptor</SubtypeId>
+      </Id>
+      <Stats>
+        <Stat>
+          <TypeId>MyObjectBuilder_EntityStat</TypeId>
+          <SubtypeId>Raptor_Health</SubtypeId>
+        </Stat>
+      </Stats>
+      <Scripts>
+        <Script>SpaceStatEffect</Script>
+      </Scripts>
+    </EntityComponent>
+
+    <EntityComponent xsi:type="MyObjectBuilder_EntityStatComponentDefinition">
+      <Id>
+        <TypeId>CharacterStatComponent</TypeId>
+        <SubtypeId>OrganicPlasma</SubtypeId>
+      </Id>
+      <Stats>
+        <Stat>
+          <TypeId>MyObjectBuilder_EntityStat</TypeId>
+          <SubtypeId>OrganicPlasma_Health</SubtypeId>
+        </Stat>
+      </Stats>
+      <Scripts>
+        <Script>SpaceStatEffect</Script>
+      </Scripts>
+    </EntityComponent>
+
+    <EntityComponent xsi:type="MyObjectBuilder_EntityStatComponentDefinition">
+      <Id>
+        <TypeId>CharacterStatComponent</TypeId>
+        <SubtypeId>Groump</SubtypeId>
+      </Id>
+      <Stats>
+        <Stat>
+          <TypeId>MyObjectBuilder_EntityStat</TypeId>
+          <SubtypeId>Groump_Health</SubtypeId>
+        </Stat>
+      </Stats>
+      <Scripts>
+        <Script>SpaceStatEffect</Script>
+      </Scripts>
+    </EntityComponent>
+
+  </EntityComponents>
+
+</Definitions>

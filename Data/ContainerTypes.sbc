@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ContainerTypes>
+
+    <!-- Shark — Apex, 16-24 Fleisch -->
+    <ContainerType CountMin="16" CountMax="24">
+      <Id><TypeId>ContainerTypeDefinition</TypeId><SubtypeId>PB_CreatureLoot_Shark</SubtypeId></Id>
+      <Items>
+        <Item AmountMin="16" AmountMax="24">
+          <Frequency>1</Frequency>
+          <Id><TypeId>ConsumableItem</TypeId><SubtypeId>MammalMeatRaw</SubtypeId></Id>
+        </Item>
+      </Items>
+    </ContainerType>
+
+    <!-- Groump — 4-6 Fleisch -->
+    <ContainerType CountMin="4" CountMax="6">
+      <Id><TypeId>ContainerTypeDefinition</TypeId><SubtypeId>PB_CreatureLoot_Groump</SubtypeId></Id>
+      <Items>
+        <Item AmountMin="4" AmountMax="6">
+          <Frequency>1</Frequency>
+          <Id><TypeId>ConsumableItem</TypeId><SubtypeId>MammalMeatRaw</SubtypeId></Id>
+        </Item>
+      </Items>
+    </ContainerType>
+
+    <!-- Raptor — 1-3 Fleisch -->
+    <ContainerType CountMin="1" CountMax="3">
+      <Id><TypeId>ContainerTypeDefinition</TypeId><SubtypeId>PB_CreatureLoot_Raptor</SubtypeId></Id>
+      <Items>
+        <Item AmountMin="1" AmountMax="3">
+          <Frequency>1</Frequency>
+          <Id><TypeId>ConsumableItem</TypeId><SubtypeId>MammalMeatRaw</SubtypeId></Id>
+        </Item>
+      </Items>
+    </ContainerType>
+
+    <!-- OrganicPlasma — 1-2 InsektFleisch -->
+    <ContainerType CountMin="1" CountMax="2">
+      <Id><TypeId>ContainerTypeDefinition</TypeId><SubtypeId>PB_CreatureLoot_OrganicPlasma</SubtypeId></Id>
+      <Items>
+        <Item AmountMin="1" AmountMax="2">
+          <Frequency>1</Frequency>
+          <Id><TypeId>ConsumableItem</TypeId><SubtypeId>InsectMeatRaw</SubtypeId></Id>
+        </Item>
+      </Items>
+    </ContainerType>
+
+    <!-- Worm — 1-3 InsektFleisch (wie Raptor) -->
+    <ContainerType CountMin="1" CountMax="3">
+      <Id><TypeId>ContainerTypeDefinition</TypeId><SubtypeId>PB_CreatureLoot_Worm</SubtypeId></Id>
+      <Items>
+        <Item AmountMin="1" AmountMax="3">
+          <Frequency>1</Frequency>
+          <Id><TypeId>ConsumableItem</TypeId><SubtypeId>InsectMeatRaw</SubtypeId></Id>
+        </Item>
+      </Items>
+    </ContainerType>
+
+    <!-- HugeWorm — 32-48 InsektFleisch (doppelt Shark) -->
+    <ContainerType CountMin="32" CountMax="48">
+      <Id><TypeId>ContainerTypeDefinition</TypeId><SubtypeId>PB_CreatureLoot_HugeWorm</SubtypeId></Id>
+      <Items>
+        <Item AmountMin="32" AmountMax="48">
+          <Frequency>1</Frequency>
+          <Id><TypeId>ConsumableItem</TypeId><SubtypeId>InsectMeatRaw</SubtypeId></Id>
+        </Item>
+      </Items>
+    </ContainerType>
+
+  </ContainerTypes>
+</Definitions>

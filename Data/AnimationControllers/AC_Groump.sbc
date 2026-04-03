@@ -1,0 +1,338 @@
+<?xml version="1.0"?>
+<Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Definition xsi:type="AnimationControllerDefinition">
+    <Id Type="MyObjectBuilder_AnimationControllerDefinition" Subtype="AC_Groump" />
+    <Layers>
+      <Layer>
+        <Name>BGroumpBody</Name>
+        <Mode>Replace</Mode>
+        <StateMachine>SMBody</StateMachine>
+        <InitialSMNode>Start</InitialSMNode>
+       
+      </Layer>
+    </Layers>
+    <StateMachines>
+      <StateMachine>
+        <Name>SMBody</Name>
+        <Nodes>
+          <Node>
+            <Name>Move</Name>
+            <AnimationTree>
+              <EdPos>
+                <X>-278</X>
+                <Y>-46</Y>
+              </EdPos>
+              <Child xsi:type="MyObjectBuilder_AnimationTreeNodeMix1D">
+                <EdPos>
+                  <X>-11</X>
+                  <Y>-14</Y>
+                </EdPos>
+                <ParameterName>speed</ParameterName>
+                <Circular>false</Circular>
+                <Sensitivity>1</Sensitivity>
+                <MaxChange xsi:nil="true" />
+                <Child>
+                  <Param>4.1</Param>
+                  <Node xsi:type="MyObjectBuilder_AnimationTreeNodeTrack">
+                    <EdPos>
+                      <X>475</X>
+                      <Y>-160</Y>
+                    </EdPos>
+                    <PathToModel>Models\Characters\Animations\Groump_Walk.mwm</PathToModel>
+
+                    <Loop>true</Loop>
+                    <Speed>1</Speed>
+                    <Interpolate>true</Interpolate>
+                  </Node>
+                </Child>
+                <Child>
+                  <Param>8</Param>
+                  <Node xsi:type="MyObjectBuilder_AnimationTreeNodeTrack">
+                    <EdPos>
+                      <X>468</X>
+                      <Y>105</Y>
+                    </EdPos>
+                    <PathToModel>Models\Characters\Animations\Groump_Walk.mwm</PathToModel>
+
+                    <Loop>true</Loop>
+                    <Speed>1</Speed>
+                    <Interpolate>true</Interpolate>
+                  </Node>
+                </Child>
+              </Child>
+            </AnimationTree>
+            <EdPos>
+              <X>450</X>
+              <Y>10</Y>
+            </EdPos>
+            <Type>Normal</Type>
+            <Variables />
+          </Node>
+          <Node>
+            <Name>Attack</Name>
+            <AnimationTree>
+              <EdPos>
+                <X>46</X>
+                <Y>-2</Y>
+              </EdPos>
+              <Child xsi:type="MyObjectBuilder_AnimationTreeNodeTrack">
+                <EdPos>
+                  <X>321</X>
+                  <Y>-81</Y>
+                </EdPos>
+                <PathToModel>Models\Characters\Animations\Groump_Walk.mwm</PathToModel>
+                <Loop>false</Loop>
+                <Speed>1</Speed>
+                <Interpolate>true</Interpolate>
+              </Child>
+            </AnimationTree>
+            <EdPos>
+              <X>10</X>
+              <Y>380</Y>
+            </EdPos>
+            <Type>Normal</Type>
+            <Variables />
+          </Node>
+          <Node>
+            <Name>Death</Name>
+            <AnimationTree>
+              <EdPos>
+                <X>0</X>
+                <Y>0</Y>
+              </EdPos>
+              <Child xsi:type="MyObjectBuilder_AnimationTreeNodeTrack">
+                <EdPos>
+                  <X>453</X>
+                  <Y>-49</Y>
+                </EdPos>
+                <PathToModel>Models\Characters\Animations\Groump_Death.mwm</PathToModel>
+
+                <Loop>false</Loop>
+                <Speed>1</Speed>
+                <Interpolate>true</Interpolate>
+              </Child>
+            </AnimationTree>
+            <EdPos>
+              <X>450</X>
+              <Y>380</Y>
+            </EdPos>
+            <Type>Normal</Type>
+            <Variables />
+          </Node>
+          <Node>
+            <Name>all</Name>
+            <EdPos>
+              <X>419</X>
+              <Y>223</Y>
+            </EdPos>
+            <Type>AnyExceptTarget</Type>
+            <Variables />
+          </Node>
+          <Node>
+            <Name>Idle</Name>
+            <StateMachineName>SMIdle</StateMachineName>
+            <EdPos>
+              <X>-41</X>
+              <Y>24</Y>
+            </EdPos>
+            <Type>Normal</Type>
+            <Variables />
+          </Node>
+          <Node>
+            <Name>Start</Name>
+            <EdPos>
+              <X>-30</X>
+              <Y>-81</Y>
+            </EdPos>
+            <Type>PassThrough</Type>
+            <Variables />
+          </Node>
+        </Nodes>
+        <Transitions>
+          <Transition Name="Attack" From="Move" To="Attack" TimeInSec="0.1" Sync="Restart" Curve="Smooth">
+            <Priority xsi:nil="true" />
+          </Transition>
+          <Transition From="Attack" To="Move" TimeInSec="0.2" Sync="NoSynchonization" Curve="Smooth">
+            <Conditions>
+              <Conjunction>
+                <Condition Lhs="Speed" Op="GreaterOrEqual" Rhs="1.5" />
+                <Condition Lhs="@AnimationFinished" Op="Greater" Rhs="0.5" />
+              </Conjunction>
+            </Conditions>
+            <Priority xsi:nil="true" />
+          </Transition>
+          <Transition From="all" To="Death" TimeInSec="0.2" Sync="Restart" Curve="Smooth">
+            <Conditions>
+              <Conjunction>
+                <Condition Lhs="dead" Op="Equal" Rhs="1" />
+              </Conjunction>
+            </Conditions>
+            <Priority>1</Priority>
+          </Transition>
+          <Transition From="Attack" To="Idle/Idle1" TimeInSec="0.2" Sync="Restart" Curve="Smooth">
+            <Conditions>
+              <Conjunction>
+                <Condition Lhs="@AnimationFinished" Op="Equal" Rhs="1" />
+                <Condition Lhs="Speed" Op="Less" Rhs="1.5" />
+              </Conjunction>
+            </Conditions>
+            <Priority xsi:nil="true" />
+          </Transition>
+          <Transition From="Move" To="Idle/Idle1" TimeInSec="0.3" Sync="Restart" Curve="Smooth">
+            <Conditions>
+              <Conjunction>
+                <Condition Lhs="Speed" Op="Less" Rhs="0.9" />
+              </Conjunction>
+            </Conditions>
+            <Priority xsi:nil="true" />
+          </Transition>
+          <Transition Name="Attack" From="Idle/Any" To="Attack" TimeInSec="0.1" Sync="Restart" Curve="Smooth">
+            <Priority xsi:nil="true" />
+          </Transition>
+          <Transition From="Start" To="Idle/Idle1" TimeInSec="0" Sync="Restart" Curve="Smooth">
+            <Conditions>
+              <Conjunction>
+                <Condition Op="AlwaysTrue" />
+              </Conjunction>
+            </Conditions>
+            <Priority xsi:nil="true" />
+          </Transition>
+          <Transition From="Idle/Any" To="Move" TimeInSec="0.2" Sync="Restart" Curve="Smooth">
+            <Conditions>
+              <Conjunction>
+                <Condition Lhs="speed" Op="Greater" Rhs="0.95" />
+              </Conjunction>
+            </Conditions>
+            <Priority xsi:nil="true" />
+          </Transition>
+        </Transitions>
+      </StateMachine>
+      <StateMachine>
+        <Name>SMIdle</Name>
+        <Nodes>
+          <Node>
+            <Name>Idle1</Name>
+            <AnimationTree>
+              <EdPos>
+                <X>-95</X>
+                <Y>0</Y>
+              </EdPos>
+              <Child xsi:type="MyObjectBuilder_AnimationTreeNodeTrack">
+                <EdPos>
+                  <X>143</X>
+                  <Y>-99</Y>
+                </EdPos>
+                <PathToModel>Models\Characters\Animations\Groump_Walk.mwm</PathToModel>
+                <Loop>false</Loop>
+                <Speed>1</Speed>
+                <Interpolate>true</Interpolate>
+              </Child>
+            </AnimationTree>
+            <EdPos>
+              <X>-266</X>
+              <Y>-88</Y>
+            </EdPos>
+            <Type>Normal</Type>
+            <Variables />
+          </Node>
+          <Node>
+            <Name>Howling</Name>
+            <AnimationTree>
+              <EdPos>
+                <X>-91</X>
+                <Y>62</Y>
+              </EdPos>
+              <Child xsi:type="MyObjectBuilder_AnimationTreeNodeTrack">
+                <EdPos>
+                  <X>94</X>
+                  <Y>-11</Y>
+                </EdPos>
+                <PathToModel>Models\Characters\Animations\Groump_Walk.mwm</PathToModel>
+                <Loop>false</Loop>
+                <Speed>1</Speed>
+                <Interpolate>true</Interpolate>
+              </Child>
+            </AnimationTree>
+            <EdPos>
+              <X>150</X>
+              <Y>-84</Y>
+            </EdPos>
+            <Type>Normal</Type>
+            <Variables />
+          </Node>
+          <Node>
+            <Name>Any</Name>
+            <EdPos>
+              <X>-53</X>
+              <Y>20</Y>
+            </EdPos>
+            <Type>Any</Type>
+            <Variables />
+          </Node>
+          <Node>
+            <Name>IdleToHowl</Name>
+            <AnimationTree>
+              <EdPos>
+                <X>0</X>
+                <Y>0</Y>
+              </EdPos>
+              <Child xsi:type="MyObjectBuilder_AnimationTreeNodeTrack">
+                <EdPos>
+                  <X>260</X>
+                  <Y>13</Y>
+                </EdPos>
+                <PathToModel>Models\Characters\Animations\Groump_Walk.mwm</PathToModel>
+
+                <Loop>true</Loop>
+                <Speed>1</Speed>
+                <Interpolate>true</Interpolate>
+              </Child>
+            </AnimationTree>
+            <EdPos>
+              <X>-59</X>
+              <Y>-182</Y>
+            </EdPos>
+            <Type>PassThrough</Type>
+            <Variables />
+          </Node>
+        </Nodes>
+        <Transitions>
+          <Transition From="Howling" To="Idle1" TimeInSec="0.3" Sync="Restart" Curve="Smooth">
+            <Conditions>
+              <Conjunction>
+                <Condition Lhs="@animationfinished" Op="GreaterOrEqual" Rhs="1" />
+              </Conjunction>
+            </Conditions>
+            <Priority xsi:nil="true" />
+          </Transition>
+          <Transition From="Idle1" To="IdleToHowl" TimeInSec="0" Sync="Restart" Curve="Smooth">
+            <Conditions>
+              <Conjunction>
+                <Condition Lhs="@animationfinished" Op="GreaterOrEqual" Rhs="1" />
+              </Conjunction>
+            </Conditions>
+            <Priority xsi:nil="true" />
+          </Transition>
+          <Transition From="IdleToHowl" To="Howling" TimeInSec="0.1" Sync="Restart" Curve="Smooth">
+            <Conditions>
+              <Conjunction>
+                <Condition Lhs="@randomstable" Op="Less" Rhs="0.2" />
+              </Conjunction>
+            </Conditions>
+            <Priority>1</Priority>
+          </Transition>
+          <Transition From="IdleToHowl" To="Idle1" TimeInSec="0" Sync="Restart" Curve="Smooth">
+            <Conditions>
+              <Conjunction>
+                <Condition Op="AlwaysTrue" />
+              </Conjunction>
+            </Conditions>
+            <Priority xsi:nil="true" />
+          </Transition>
+        </Transitions>
+      </StateMachine>
+    </StateMachines>
+
+
+  </Definition>
+</Definitions>

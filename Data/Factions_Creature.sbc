@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <Factions>
+
+
+		<Faction Tag="SANI" Founder="Creatures">
+			<Id>
+				<TypeId>MyObjectBuilder_FactionDefinition</TypeId> <!--Do Not Edit-->
+				<SubtypeId>Space_Animals</SubtypeId> <!--Must Be Unique-->
+			</Id>
+			<DisplayName>Space Animals</DisplayName>
+			<IsDefault>true</IsDefault>
+			<DefaultRelation>Enemies</DefaultRelation> <!--Enemies, Neutral, Friends-->
+			<AcceptHumans>false</AcceptHumans>
+			<AutoAcceptMember>false</AutoAcceptMember>
+			<StartingBalance>0</StartingBalance>
+			<Type>None</Type> <!--None, Miner, Trader, Builder-->
+			<DiscoveredByDefault>true</DiscoveredByDefault>
+			<FactionIcon>Textures\FactionLogo\Spiders.dds</FactionIcon> <!--Game or Mod Path For Texture File-->
+		</Faction>
+
+
+
+  </Factions>
+</Definitions>

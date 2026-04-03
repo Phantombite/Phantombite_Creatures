@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Characters>
+
+    <Character>
+      <Id>
+        <TypeId>MyObjectBuilder_Character</TypeId>
+        <SubtypeId>Shark</SubtypeId>
+      </Id>
+
+      <Name>Shark</Name>
+      <AnimationController>Shark</AnimationController>
+      <Model>Models\Characters\Shark.mwm</Model>
+
+      <DeathSoundName>BotBeast</DeathSoundName>
+      <MovementSoundName></MovementSoundName>
+      <PainSoundName>BeastGrowl</PainSoundName>
+
+      <LoopingFootsteps>true</LoopingFootsteps>
+      <PhysicalMaterial>LargeAnimal</PhysicalMaterial>
+      <Mass>30</Mass>
+
+      <Skeleton>Tetrapod_simple</Skeleton>
+      <SpineBone>BeastSpine3</SpineBone>
+      <EnableFirstPersonView>false</EnableFirstPersonView>
+
+      <AnimationMappings>
+        <Mapping Name="Idle"   AnimationSubtypeName="Shark_Idle" />
+        <Mapping Name="Run"    AnimationSubtypeName="Shark_Walk" />
+        <Mapping Name="Walk"   AnimationSubtypeName="Shark_Walk" />
+        <Mapping Name="Attack" AnimationSubtypeName="Shark_Attack" />
+        <Mapping Name="Died"   AnimationSubtypeName="Shark_Death" />
+      </AnimationMappings>
+
+      <UsableByPlayer>false</UsableByPlayer>
+      <VisibleOnHud>false</VisibleOnHud>
+
+      <Inventory>
+        <InventoryVolume>1</InventoryVolume>
+        <InventoryMass>50</InventoryMass>
+      </Inventory>
+
+      <MaxHealth>200</MaxHealth>
+
+      <EnabledComponents>RagdollComponent</EnabledComponents>
+      <EnableSpawnInventoryAsContainer>false</EnableSpawnInventoryAsContainer>
+      <SpawnInventoryOnBodyRemoval>true</SpawnInventoryOnBodyRemoval>
+
+      <LootingTime>50</LootingTime>
+      <UsesAtmosphereDetector>true</UsesAtmosphereDetector>
+      <UsesReverbDetector>true</UsesReverbDetector>
+
+      <!-- BONES -->
+      <HeadBone>BeastHead</HeadBone>
+      <ModelRootBoneName>Dummy001</ModelRootBoneName>
+
+      <VerticalPositionFlyingOnly>false</VerticalPositionFlyingOnly>
+      <UseOnlyWalking>false</UseOnlyWalking>
+
+      <MaxSlope>30</MaxSlope>
+      <MaxSprintSpeed>11.2</MaxSprintSpeed>
+      <MaxRunSpeed>5</MaxRunSpeed>
+      <MaxBackrunSpeed>5</MaxBackrunSpeed>
+      <MaxRunStrafingSpeed>5</MaxRunStrafingSpeed>
+      <MaxWalkSpeed>3</MaxWalkSpeed>
+      <MaxBackwalkSpeed>3</MaxBackwalkSpeed>
+      <MaxWalkStrafingSpeed>3</MaxWalkStrafingSpeed>
+      <MaxCrouchWalkSpeed>1</MaxCrouchWalkSpeed>
+      <MaxCrouchBackwalkSpeed>1</MaxCrouchBackwalkSpeed>
+      <MaxCrouchStrafingSpeed>1</MaxCrouchStrafingSpeed>
+
+      <CharacterHeadSize>0</CharacterHeadSize>
+      <CharacterHeadHeight>0</CharacterHeadHeight>
+      <CharacterCollisionScale>1</CharacterCollisionScale>
+      <CharacterCollisionHeight>3.1</CharacterCollisionHeight>
+      <CharacterCollisionWidth>3</CharacterCollisionWidth>
+
+      <MaxForce>1500</MaxForce>
+
+      <BoneSet>
+        <Name>Beast_Body</Name>
+      </BoneSet>
+
+      <RagdollBonesMappings>
+        <BoneSet><Name>BeastHead</Name><Bones>BeastHead BeastHeadJaw</Bones><CollisionRadius>2</CollisionRadius></BoneSet>
+        <BoneSet><Name>BeastNeck2</Name><Bones>BeastHead BeastNeck2</Bones><CollisionRadius>2</CollisionRadius></BoneSet>
+        <BoneSet><Name>BeastNeck1</Name><Bones>BeastNeck2 BeastNeck1</Bones><CollisionRadius>2</CollisionRadius></BoneSet>
+        <BoneSet><Name>BeastRibcage</Name><Bones>BeastRibcage BeastSpine3</Bones><CollisionRadius>2</CollisionRadius></BoneSet>
+        <BoneSet><Name>BeastSpine2</Name><Bones>BeastPelvis BeastSpine2</Bones><CollisionRadius>2</CollisionRadius></BoneSet>
+        <BoneSet><Name>BeastLRearLegCalf</Name><Bones>BeastLRearLegThigh BeastLRearLegCalf</Bones><CollisionRadius>2</CollisionRadius></BoneSet>
+        <BoneSet><Name>BeastLRearLegAnkle1</Name><Bones>BeastLRearLegCalf BeastLRearLegAnkle1</Bones><CollisionRadius>2</CollisionRadius></BoneSet>
+        <BoneSet><Name>BeastLRearLegAnkle2</Name><Bones>BeastLRearLegAnkle1 BeastLRearLegAnkle2</Bones><CollisionRadius>2</CollisionRadius></BoneSet>
+        <BoneSet><Name>BeastLLegDigit01</Name><Bones>BeastLRearLegAnkle2 BeastLLegDigit01</Bones><CollisionRadius>2</CollisionRadius></BoneSet>
+        <BoneSet><Name>BeastRRearLegCalf</Name><Bones>BeastRRearLegThigh BeastRRearLegCalf</Bones><CollisionRadius>2</CollisionRadius></BoneSet>
+        <BoneSet><Name>BeastRRearLegAnkle1</Name><Bones>BeastRRearLegCalf BeastRRearLegAnkle1</Bones><CollisionRadius>2</CollisionRadius></BoneSet>
+        <BoneSet><Name>BeastRRearLegAnkle2</Name><Bones>BeastRRearLegAnkle1 BeastRRearLegAnkle2</Bones><CollisionRadius>2</CollisionRadius></BoneSet>
+        <BoneSet><Name>BeastRLegDigit01</Name><Bones>BeastRRearLegAnkle2 BeastRLegDigit01</Bones><CollisionRadius>2</CollisionRadius></BoneSet>
+        <BoneSet><Name>BeastLFrontLegUpper</Name><Bones>BeastLFrontLegCollarbone BeastLFrontLegUpper</Bones><CollisionRadius>2</CollisionRadius></BoneSet>
+        <BoneSet><Name>BeastLFrontLegLower</Name><Bones>BeastLFrontLegUpper BeastLFrontLegLower</Bones><CollisionRadius>2</CollisionRadius></BoneSet>
+        <BoneSet><Name>BeastLFrontLegPalm1</Name><Bones>BeastLFrontLegLower BeastLFrontLegPalm1</Bones><CollisionRadius>1</CollisionRadius></BoneSet>
+        <BoneSet><Name>BeastLFrontLegDigit</Name><Bones>BeastLFrontLegPalm1 BeastLFrontLegDigit01</Bones><CollisionRadius>1</CollisionRadius></BoneSet>
+        <BoneSet><Name>BeastRFrontLegUpper</Name><Bones>BeastRFrontLegCollarbone BeastRFrontLegUpper</Bones><CollisionRadius>2</CollisionRadius></BoneSet>
+        <BoneSet><Name>BeastRFrontLegLower</Name><Bones>BeastRFrontLegUpper BeastRFrontLegLower</Bones><CollisionRadius>2</CollisionRadius></BoneSet>
+        <BoneSet><Name>BeastRFrontLegPalm1</Name><Bones>BeastRFrontLegLower BeastRFrontLegPalm1</Bones><CollisionRadius>1</CollisionRadius></BoneSet>
+        <BoneSet><Name>BeastRFrontLegDigit01</Name><Bones>BeastRFrontLegPalm1 BeastRFrontLegDigit01</Bones><CollisionRadius>1</CollisionRadius></BoneSet>
+      </RagdollBonesMappings>
+
+      <InitialAnimation>Shark_Idle</InitialAnimation>
+
+      <DeadBodyShape>
+        <BoxShapeScale x="1.2" y="0.4" z="1.75"/>
+        <RelativeCenterOfMass x="0" y="0" z="0"/>
+        <RelativeShapeTranslation x="0" y="-0.35" z="0"/>
+        <Friction>120</Friction>
+      </DeadBodyShape>
+
+      <RotationToSupport>OneAxis</RotationToSupport>
+    </Character>
+
+  </Characters>
+</Definitions>

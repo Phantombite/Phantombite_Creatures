@@ -1,0 +1,204 @@
+<?xml version="1.0"?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Animations>
+
+    <Animation>
+      <Id>
+        <TypeId>AnimationDefinition</TypeId>
+        <SubtypeId>Raptor_Walk</SubtypeId>
+      </Id>
+      <DisplayName>walk</DisplayName>
+      <Description>Death</Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <AnimationModel>Models\Characters\Animations\Raptor_Walk.mwm</AnimationModel>
+      <ClipIndex>0</ClipIndex>
+      <InfluenceArea>Body</InfluenceArea>
+      <Public>false</Public>
+
+    </Animation>
+	
+	    <Animation>
+      <Id>
+        <TypeId>AnimationDefinition</TypeId>
+        <SubtypeId>Raptor_Death</SubtypeId>
+      </Id>
+      <DisplayName>Death</DisplayName>
+      <Description>Death</Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <AnimationModel>Models\Characters\Animations\Raptor_Death.mwm</AnimationModel>
+      <ClipIndex>0</ClipIndex>
+      <InfluenceArea>Body</InfluenceArea>
+      <Public>false</Public>
+
+    </Animation>
+	
+		    <Animation>
+      <Id>
+        <TypeId>AnimationDefinition</TypeId>
+        <SubtypeId>Raptor_Attack</SubtypeId>
+      </Id>
+      <DisplayName>Attack</DisplayName>
+      <Description>Death</Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <AnimationModel>Models\Characters\Animations\Raptor_Attack.mwm</AnimationModel>
+      <ClipIndex>0</ClipIndex>
+      <InfluenceArea>Body</InfluenceArea>
+      <Public>false</Public>
+
+    </Animation>
+	
+	    <Animation>
+      <Id>
+        <TypeId>AnimationDefinition</TypeId>
+        <SubtypeId>OrganicPlasma_Walk</SubtypeId>
+      </Id>
+      <DisplayName>walk</DisplayName>
+      <Description>Death</Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <AnimationModel>Models\Characters\Animations\OrganicPlasma_Walk.mwm</AnimationModel>
+      <ClipIndex>0</ClipIndex>
+      <InfluenceArea>Tent_Body</InfluenceArea>
+      <Public>false</Public>
+
+    </Animation>
+	
+	    <Animation>
+      <Id>
+        <TypeId>AnimationDefinition</TypeId>
+        <SubtypeId>OrganicPlasma_Death</SubtypeId>
+      </Id>
+      <DisplayName>Death</DisplayName>
+      <Description>Death</Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <AnimationModel>Models\Characters\Animations\OrganicPlasma_Death.mwm</AnimationModel>
+      <ClipIndex>0</ClipIndex>
+      <InfluenceArea>Tent_Body</InfluenceArea>
+      <Public>false</Public>
+
+    </Animation>
+	
+	<Animation>
+      <Id>
+        <TypeId>AnimationDefinition</TypeId>
+        <SubtypeId>OrganicPlasma_Attack</SubtypeId>
+      </Id>
+      <DisplayName>Attack</DisplayName>
+      <Description>Death</Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <AnimationModel>Models\Characters\Animations\OrganicPlasma_Attack.mwm</AnimationModel>
+      <ClipIndex>0</ClipIndex>
+      <InfluenceArea>Tent_Body</InfluenceArea>
+      <Public>false</Public>
+
+    </Animation>
+
+    <Animation>
+      <Id>
+        <TypeId>AnimationDefinition</TypeId>
+        <SubtypeId>Shark_Walk</SubtypeId>
+      </Id>
+      <DisplayName>walk</DisplayName>
+      <Description>Death</Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <AnimationModel>Models\Characters\Animations\Shark_Walk.mwm</AnimationModel>
+      <ClipIndex>0</ClipIndex>
+      <InfluenceArea>Beast_Body</InfluenceArea>
+      <Public>false</Public>
+
+    </Animation>
+
+	    <Animation>
+      <Id>
+        <TypeId>AnimationDefinition</TypeId>
+        <SubtypeId>Shark_Idle</SubtypeId>
+      </Id>
+      <DisplayName>walk</DisplayName>
+      <Description>Death</Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <AnimationModel>Models\Characters\Animations\Shark_Idle.mwm</AnimationModel>
+      <ClipIndex>0</ClipIndex>
+      <InfluenceArea>Beast_Body</InfluenceArea>
+      <Public>false</Public>
+
+    </Animation>
+
+	    <Animation>
+      <Id>
+        <TypeId>AnimationDefinition</TypeId>
+        <SubtypeId>Shark_Death</SubtypeId>
+      </Id>
+      <DisplayName>Death</DisplayName>
+      <Description>Death</Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <AnimationModel>Models\Characters\Animations\Shark_Death.mwm</AnimationModel>
+      <ClipIndex>0</ClipIndex>
+      <InfluenceArea>Beast_Body</InfluenceArea>
+      <Public>false</Public>
+
+    </Animation>
+	
+	<Animation>
+      <Id>
+        <TypeId>AnimationDefinition</TypeId>
+        <SubtypeId>Shark_Attack</SubtypeId>
+      </Id>
+      <DisplayName>Attack</DisplayName>
+      <Description>Death</Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <AnimationModel>Models\Characters\Animations\Shark_Attack.mwm</AnimationModel>
+      <ClipIndex>0</ClipIndex>
+      <InfluenceArea>Beast_Body</InfluenceArea>
+      <Public>false</Public>
+
+    </Animation>
+
+	<Animation>
+      <Id>
+        <TypeId>AnimationDefinition</TypeId>
+        <SubtypeId>Shark_Attack2</SubtypeId>
+      </Id>
+      <DisplayName>Attack</DisplayName>
+      <Description>Death</Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <AnimationModel>Models\Characters\Animations\Shark_Attack2.mwm</AnimationModel>
+      <ClipIndex>0</ClipIndex>
+      <InfluenceArea>Beast_Body</InfluenceArea>
+      <Public>false</Public>
+
+    </Animation>
+    <Animation>
+      <Id>
+        <TypeId>AnimationDefinition</TypeId>
+        <SubtypeId>Groump_Walk</SubtypeId>
+      </Id>
+      <DisplayName>walk</DisplayName>
+      <Description>Death</Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <AnimationModel>Models\Characters\Animations\Groump_Walk.mwm</AnimationModel>
+      <ClipIndex>0</ClipIndex>
+      <InfluenceArea>GroumpBody</InfluenceArea>
+      <Public>false</Public>
+
+    </Animation>
+
+
+
+	    <Animation>
+      <Id>
+        <TypeId>AnimationDefinition</TypeId>
+        <SubtypeId>Groump_Death</SubtypeId>
+      </Id>
+      <DisplayName>Death</DisplayName>
+      <Description>Death</Description>
+      <Icon>Textures\GUI\Icons\Fake.dds</Icon>
+      <AnimationModel>Models\Characters\Animations\Groump_Death.mwm</AnimationModel>
+      <ClipIndex>0</ClipIndex>
+      <InfluenceArea>GroumpBody</InfluenceArea>
+      <Public>false</Public>
+
+    </Animation>
+	
+
+
+  </Animations>
+</Definitions>
