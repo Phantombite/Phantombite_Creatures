@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <BotDefinitions>
+
+    <!-- Wolf: Passive — greift nur an wenn angegriffen -->
+    <BotDefinition xsi:type="MyObjectBuilder_AnimalBotDefinition">
+      <Id Type="AnimalBot" Subtype="Wolf"/>
+      <BehaviorType>Passive</BehaviorType>
+    </BotDefinition>
+
+    <!-- SpaceSpider: Passive -->
+    <BotDefinition xsi:type="MyObjectBuilder_AnimalBotDefinition">
+      <Id Type="AnimalBot" Subtype="SpaceSpider"/>
+      <BehaviorType>Passive</BehaviorType>
+    </BotDefinition>
+
+    <!-- SpaceSpiderBrown: Passive -->
+    <BotDefinition xsi:type="MyObjectBuilder_AnimalBotDefinition">
+      <Id Type="AnimalBot" Subtype="SpaceSpiderBrown"/>
+      <BehaviorType>Passive</BehaviorType>
+    </BotDefinition>
+
+    <!-- SpaceSpiderBlack: Passive -->
+    <BotDefinition xsi:type="MyObjectBuilder_AnimalBotDefinition">
+      <Id Type="AnimalBot" Subtype="SpaceSpiderBlack"/>
+      <BehaviorType>Passive</BehaviorType>
+    </BotDefinition>
+
+  </BotDefinitions>
+</Definitions>
