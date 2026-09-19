@@ -12,7 +12,7 @@ namespace PhantombiteCreatures.Core
     /// Phantombite_Creatures Session — Core v2.0.0 Anbindung
     ///
     /// Protokoll (Mod → Core, Kanal 1995000):
-    ///   REGISTER|creatures|Phantombite Creatures|1.0.0|1995003|cmd1:bool:desc|...
+    ///   REGISTER|creatures|Phantombite Creatures|1.0.0|1995003|cmd1:adminOnly(1/0):desc|...
     ///   HEAVY_START|creatures|opName
     ///   HEAVY_END|creatures|opName
     ///   PERFACK|creatures|confirmedLevel
@@ -39,7 +39,6 @@ namespace PhantombiteCreatures.Core
 
         private Creatures_SpawnManager _spawnManager;
         private bool _initialized  = false;
-        private bool _coreReady    = false;
         private int  _debugLevel   = 0;   // 0=INFO 1=DEBUG 2=VERBOSE
         private int  _perfLevel    = 0;   // 0=voll 1=reduziert 2=minimal 3=aus
         private int  _fallbackTick = 0;
@@ -72,7 +71,6 @@ namespace PhantombiteCreatures.Core
                 // READY — Core ist bereit
                 if (msg == "READY")
                 {
-                    _coreReady = true;
                     SendRegister();
                     Log("READY empfangen — REGISTER gesendet");
                     if (!_initialized) Init();
@@ -125,12 +123,13 @@ namespace PhantombiteCreatures.Core
         private void SendRegister()
         {
             // Format: REGISTER|name|desc|version|channel|cmd:adminOnly:desc|...
+            // adminOnly: 1 = nur Admins, 0 = alle Spieler (nicht "true"/"false")
             // Command-Namen dürfen keine Leerzeichen enthalten — Args kommen separat
             string msg =
                 "REGISTER|" + MOD_NAME + "|" + MOD_DESC + "|" + VERSION + "|" + MY_CHANNEL +
-                "|status:false:Aktive Kreaturen und Wellen anzeigen" +
-                "|spawn:true:Spawn-Timer zurücksetzen. Arg: wolf / spider / spiderbrown / spiderblack" +
-                "|timer:true:Timer für Spieler zurücksetzen. Arg: <Spielername>";
+                "|status:0:Aktive Kreaturen und Wellen anzeigen" +
+                "|spawn:1:Spawn-Timer zurücksetzen. Arg: wolf / spider / spiderbrown / spiderblack" +
+                "|timer:1:Timer für Spieler zurücksetzen. Arg: <Spielername>";
             MyAPIGateway.Utilities.SendModMessage(CORE_CHANNEL, msg);
         }
 
