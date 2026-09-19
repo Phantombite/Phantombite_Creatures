@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Sandbox.ModAPI;
 using VRage.Game.Components;
+using VRage.Game.ModAPI;
 using VRage.Utils;
 using PhantombiteCreatures.Modules;
 
