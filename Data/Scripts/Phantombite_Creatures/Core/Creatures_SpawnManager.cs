@@ -22,7 +22,7 @@ namespace PhantombiteCreatures.Core
         private const int DESPAWN_INTERVAL_TICKS = 600;  // Alle 10s Despawn-Check
         private const int DEAD_CHECK_INTERVAL    = 600;  // Alle 10s Leichen-Check
         private const int SPAWN_ATTEMPTS         = 10;
-        private const double MAX_SPAWN_ALTITUDE  = 150.0;
+        private const double MAX_SPAWN_ALTITUDE  = 5000.0; // Nur für Space-Check, nicht Jetpack
 
         // Wave-System Timing (in Ticks bei 60t/s)
         private const int WAVE_TIMER_MIN = 18000;   // 5 Minuten minimal
@@ -245,16 +245,49 @@ namespace PhantombiteCreatures.Core
         /// <summary>Status-Übersicht für !pbc creatures status</summary>
         public string GetStatus()
         {
+            // Spieler-Namen laden
+            var playerNames = new System.Collections.Generic.Dictionary<ulong, string>();
+            var players     = new System.Collections.Generic.List<VRage.Game.ModAPI.IMyPlayer>();
+            MyAPIGateway.Players.GetPlayers(players);
+            foreach (var p in players)
+                playerNames[p.SteamUserId] = p.DisplayName;
+
             var sb = new System.Text.StringBuilder();
-            sb.Append("Kreaturen: ").Append(_spawned.Count).Append(" aktiv");
+
+            if (_playerCooldownTicks.Count == 0)
+            {
+                sb.Append("Keine Spieler im System");
+                return sb.ToString();
+            }
+
             foreach (var kvp in _playerCooldownTicks)
             {
-                int alive = GetTotalPlayerCount(kvp.Key);
+                if (sb.Length > 0) sb.Append(", ");
+
+                string name  = playerNames.ContainsKey(kvp.Key) ? playerNames[kvp.Key] : kvp.Key.ToString();
+                int    alive = GetTotalPlayerCount(kvp.Key);
+
+                sb.Append(name).Append(": ");
+
                 if (alive > 0)
-                    sb.Append(" | ").Append(kvp.Key).Append(": ").Append(alive).Append(" aktiv");
-                else if (kvp.Value > 0)
-                    sb.Append(" | ").Append(kvp.Key).Append(": nächste Welle in ").Append(kvp.Value / 3600).Append("min");
+                {
+                    sb.Append(alive).Append(" Kreatur(en) aktiv");
+                }
+                else if (kvp.Value <= 0)
+                {
+                    sb.Append("bereit");
+                }
+                else
+                {
+                    // Ticks -> HH:MM:SS (60 Ticks/Sekunde)
+                    int totalSec = kvp.Value / 60;
+                    int hours    = totalSec / 3600;
+                    int minutes  = (totalSec % 3600) / 60;
+                    int seconds  = totalSec % 60;
+                    sb.AppendFormat("{0:D2}:{1:D2}:{2:D2}", hours, minutes, seconds);
+                }
             }
+
             return sb.ToString();
         }
 

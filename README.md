@@ -6,8 +6,8 @@ Kein MES nötig, das Spawn-System ist eigener Code.
 ## Funktionen
 | Kreatur | Wo / Wann (Standard) |
 |---|---|
-| Wolf | EarthLike, Tag 1–2, Nacht 2–4 |
-| SpaceSpider, SpaceSpiderBrown, SpaceSpiderBlack | Alien und Pertam, Tag 1–4 |
+| Wolf | EarthLike, Tag 1–2, Nacht 2–4 (weitere Planeten in der Config einstellbar) |
+| SpaceSpider, SpaceSpiderBrown, SpaceSpiderBlack | Alien, Pertam und weitere (u. a. Pandora), Tag 1–4 |
 
 - Spawn in der Nähe von Spielern mit Abklingzeit, automatisches Aufräumen zu weit entfernter Kreaturen und von Leichen
 - Alles in einer Config einstellbar
@@ -19,9 +19,8 @@ Kein MES nötig, das Spawn-System ist eigener Code.
 ```
 | Command | Wer | Beschreibung |
 |---|---|---|
-| `status` | alle | Aktive Kreaturen und Wellen anzeigen |
-| `spawn [wolf\|spider\|spiderbrown\|spiderblack]` | Admin | Spawn-Timer zurücksetzen bzw. einen Typ spawnen |
-| `timer [Spielername]` | Admin | Timer für einen Spieler zurücksetzen |
+| `status` | alle | Spawn-Timer aller Spieler anzeigen |
+| `spawn [wolf\|spider\|spiderbrown\|spiderblack] [Spielername]` | Admin | Kreatur spawnen: ohne Typ zufällig, ohne Spielername bei dir selbst |
 
 ## Konfiguration
 `PhantombiteCreatures_Config.ini` im World-Storage (wird beim ersten Start mit Standardwerten angelegt, ein Abschnitt pro Kreatur).

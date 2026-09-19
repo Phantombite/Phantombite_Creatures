@@ -19,9 +19,8 @@ Pro Definition ein Abschnitt (`[Wolf]`, `[SpaceSpider]`, ...).
 ## Commands (`!pbc creatures ...`)
 | Command | Admin | Wirkung |
 |---|---|---|
-| `status` | nein | Aktive Kreaturen und Wellen anzeigen |
-| `spawn [wolf\|spider\|spiderbrown\|spiderblack]` | ja | Spawn-Timer zurücksetzen bzw. bestimmten Typ spawnen |
-| `timer [Spielername]` | ja | Timer für einen Spieler zurücksetzen |
+| `status` | nein | Spawn-Timer aller Spieler anzeigen |
+| `spawn [wolf\|spider\|spiderbrown\|spiderblack] [Spielername]` | ja | Kreatur spawnen (ohne Typ zufällig, ohne Spielername bei dir) |
 
 ## Ablauf
 - Alle 5 s: Spawn-Prüfung pro Spieler (mit Abklingzeit), alle 10 s: Despawn-Prüfung, alle 10 s: Leichen-Prüfung.
@@ -33,8 +32,9 @@ Empfängt `READY`, `LOGLEVEL`, `PERFLEVEL`, `CMD`, meldet `HEAVY_START`/`HEAVY_E
 **Performance-Level:** 1–2 halbiert die Update-Rate, 3 schaltet den Mod aus (kein Update).
 
 ## Dateien
-`Core/Creatures_Session.cs` (Einstieg, Commands), `Creatures_SpawnManager.cs` (Spawn, Despawn, Suppress-Queue),
-`Creatures_Rules.cs` (Regeln), `Modules/Creatures_Definition.cs`, `Creatures_FileManager.cs`, `Creatures_Logger.cs`.
+`Core/Creatures_Session.cs` (Einstieg und Spawn-Logik, nur Server), `Modules/Creature_Command.cs` (Anbindung an den Core:
+READY, REGISTER, CMD, PERFLEVEL), `Creatures_SpawnManager.cs` (Spawn, Despawn, Suppress-Queue), `Creatures_Rules.cs` (Regeln),
+`Modules/Creatures_Definition.cs`, `Creatures_FileManager.cs`, `Creatures_Logger.cs`.
 
 ## Offene Punkte / Roadmap
 - [ ] **Totalabsturz durch Radioaktivität** (aus der Roadmap): Ursache noch offen

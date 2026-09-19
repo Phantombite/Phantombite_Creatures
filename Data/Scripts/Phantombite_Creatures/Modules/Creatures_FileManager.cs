@@ -34,8 +34,8 @@ NightPackMax=4
 
 [SpaceSpider]
 Enabled=true
-DayPlanets=Alien,Pertam,Mars
-NightPlanets=Alien,Pertam,Mars,Europa,Triton
+DayPlanets=Alien,Pertam,Mars,Pandora
+NightPlanets=Alien,Pertam,Mars,Europa,Triton,Pandora
 PerPlayerMax=4
 MinSpawnRadius=200
 SpawnRadius=500
@@ -47,8 +47,8 @@ NightPackMax=4
 
 [SpaceSpiderBrown]
 Enabled=true
-DayPlanets=Alien,Pertam,Titan
-NightPlanets=Alien,Pertam,Titan,Mars
+DayPlanets=Alien,Pertam,Titan,Pandora
+NightPlanets=Alien,Pertam,Titan,Mars,Pandora
 PerPlayerMax=4
 MinSpawnRadius=200
 SpawnRadius=500
@@ -60,8 +60,8 @@ NightPackMax=4
 
 [SpaceSpiderBlack]
 Enabled=true
-DayPlanets=Alien,Pertam
-NightPlanets=Alien,Pertam,Triton,Europa,Moon
+DayPlanets=Alien,Pertam,Pandora
+NightPlanets=Alien,Pertam,Triton,Europa,Moon,Pandora
 PerPlayerMax=3
 MinSpawnRadius=200
 SpawnRadius=500

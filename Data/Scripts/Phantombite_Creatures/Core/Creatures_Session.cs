@@ -2,286 +2,89 @@ using System;
 using System.Collections.Generic;
 using Sandbox.ModAPI;
 using VRage.Game.Components;
-using VRage.Game.ModAPI;
 using VRage.Utils;
 using PhantombiteCreatures.Modules;
 
 namespace PhantombiteCreatures.Core
 {
     /// <summary>
-    /// Phantombite_Creatures Session — Core v2.0.0 Anbindung
+    /// Creatures_Session — Spawn-Logik (nur Server)
     ///
-    /// Protokoll (Mod → Core, Kanal 1995000):
-    ///   REGISTER|creatures|Phantombite Creatures|1.0.0|1995003|cmd1:adminOnly(1/0):desc|...
-    ///   HEAVY_START|creatures|opName
-    ///   HEAVY_END|creatures|opName
-    ///   PERFACK|creatures|confirmedLevel
-    ///   CMDRESULT|creatures|cmd|args|steamId|ok|text
-    ///
-    /// Protokoll (Core → Mod, Kanal 1995003):
-    ///   READY
-    ///   LOGLEVEL|0/1/2
-    ///   PERFLEVEL|0-3
-    ///   CMD|commandName|arg1|...|STEAM:steamId
+    /// Core-Kommunikation (READY, REGISTER, CMD) ist in Creatures_Command.
+    /// Diese Session stellt das Public Interface für Creatures_Command bereit:
+    ///   - Instance       (statische Referenz)
+    ///   - OnCoreReady()  (Init-Trigger)
+    ///   - SetPerfLevel() (Performance)
+    ///   - GetStatus()    (Timer-Anzeige)
+    ///   - ForceSpawn()   (Command-Interface)
+    ///   - ForceSpawnType()
     /// </summary>
     [MySessionComponentDescriptor(MyUpdateOrder.BeforeSimulation)]
     public class Creatures_Session : MySessionComponentBase
     {
         private const string SRC          = "Creatures_Session";
-        private const string VERSION      = "1.0.0";
-        private const string MOD_NAME     = "creatures";
-        private const string MOD_DESC     = "Phantombite Creatures";
-        private const long   MY_CHANNEL   = 1995003L;
         private const long   CORE_CHANNEL = 1995000L;
 
-        // Fallback: Init auch ohne Core nach 10 Sekunden
-        private const int FALLBACK_TICKS = 600;
+        // Öffentliche Referenz für Creatures_Command
+        public static Creatures_Session Instance { get; private set; }
 
         private Creatures_SpawnManager _spawnManager;
         private bool _initialized  = false;
-        private int  _debugLevel   = 0;   // 0=INFO 1=DEBUG 2=VERBOSE
-        private int  _perfLevel    = 0;   // 0=voll 1=reduziert 2=minimal 3=aus
+        private int  _perfLevel    = 0;
         private int  _fallbackTick = 0;
+        private const int FALLBACK_TICKS = 600; // 10 Sekunden
 
         // ── LoadData ──────────────────────────────────────────────────────────
 
         public override void LoadData()
         {
             if (!MyAPIGateway.Multiplayer.IsServer) return;
-            try
-            {
-                MyAPIGateway.Utilities.RegisterMessageHandler(MY_CHANNEL, OnCoreMessage);
-                Log("LoadData — warte auf Core READY");
-            }
-            catch (Exception ex)
-            {
-                MyLog.Default.WriteLineAndConsole("[PB.creatures] [ERROR] LoadData: " + ex);
-            }
+            Instance = this;
+            Log("LoadData — Server-Instanz bereit");
         }
 
-        // ── Core Kommunikation ────────────────────────────────────────────────
+        // ── Public Interface für Creatures_Command ────────────────────────────
 
-        private void OnCoreMessage(object data)
+        /// <summary>Wird von Creatures_Command aufgerufen wenn Core READY sendet.</summary>
+        public void OnCoreReady()
         {
-            try
-            {
-                string msg = data as string;
-                if (string.IsNullOrEmpty(msg)) return;
-
-                // READY — Core ist bereit
-                if (msg == "READY")
-                {
-                    SendRegister();
-                    Log("READY empfangen — REGISTER gesendet");
-                    if (!_initialized) Init();
-                    return;
-                }
-
-                // LOGLEVEL|0/1/2
-                if (msg.StartsWith("LOGLEVEL|"))
-                {
-                    int level;
-                    if (int.TryParse(msg.Substring(9), out level))
-                    {
-                        _debugLevel = level;
-                        ApplyLogLevel(level);
-                        Log("LOGLEVEL gesetzt: " + level);
-                    }
-                    return;
-                }
-
-                // PERFLEVEL|0-3
-                if (msg.StartsWith("PERFLEVEL|"))
-                {
-                    int level;
-                    if (int.TryParse(msg.Substring(10), out level))
-                    {
-                        int old = _perfLevel;
-                        _perfLevel = level;
-                        OnPerfLevelChanged(old, level);
-                        // PERFACK zurück an Core
-                        MyAPIGateway.Utilities.SendModMessage(CORE_CHANNEL,
-                            "PERFACK|" + MOD_NAME + "|" + level);
-                        Log("PERFLEVEL: " + old + " → " + level + " (ACK gesendet)");
-                    }
-                    return;
-                }
-
-                // CMD|commandName|arg1|...|STEAM:steamId
-                if (msg.StartsWith("CMD|"))
-                {
-                    HandleCommand(msg);
-                    return;
-                }
-            }
-            catch (Exception ex)
-            {
-                LogError("OnCoreMessage", ex);
-            }
+            if (!_initialized) Init();
         }
 
-        private void SendRegister()
+        public void SetPerfLevel(int level)
         {
-            // Format: REGISTER|name|desc|version|channel|cmd:adminOnly:desc|...
-            // adminOnly: 1 = nur Admins, 0 = alle Spieler (nicht "true"/"false")
-            // Command-Namen dürfen keine Leerzeichen enthalten — Args kommen separat
-            string msg =
-                "REGISTER|" + MOD_NAME + "|" + MOD_DESC + "|" + VERSION + "|" + MY_CHANNEL +
-                "|status:0:Aktive Kreaturen und Wellen anzeigen" +
-                "|spawn:1:Spawn-Timer zurücksetzen. Arg: wolf / spider / spiderbrown / spiderblack" +
-                "|timer:1:Timer für Spieler zurücksetzen. Arg: <Spielername>";
-            MyAPIGateway.Utilities.SendModMessage(CORE_CHANNEL, msg);
+            _perfLevel = level;
+            Log("PerfLevel gesetzt: " + level);
         }
 
-        // ── Performance ───────────────────────────────────────────────────────
-
-        private void OnPerfLevelChanged(int oldLevel, int newLevel)
+        public string GetStatus()
         {
-            // Level 0 = volle Spawn-Rate (Normal)
-            // Level 1 = reduzierte Rate (Spawn-Intervall verdoppelt in Update)
-            // Level 2 = minimal (kein automatischer Spawn, nur Force-Spawn via Command)
-            // Level 3 = komplett aus (kein Update)
-            Log("Performance Level: " + oldLevel + " → " + newLevel);
+            if (_spawnManager == null) return "SpawnManager nicht bereit";
+            return _spawnManager.GetStatus();
         }
 
-        // ── Command Handling ──────────────────────────────────────────────────
-
-        private void HandleCommand(string msg)
+        public void ForceSpawn(ulong steamId)
         {
-            try
-            {
-                // Format von Core: CMD|commandName|arg1|...|STEAM:steamId
-                string[] parts = msg.Split('|');
-                if (parts.Length < 3) return;
-
-                string commandName = parts[1].ToLower().Trim();
-                string steamPart   = parts[parts.Length - 1]; // "STEAM:76561198..."
-                string steamId     = steamPart.StartsWith("STEAM:") ? steamPart.Substring(6) : "0";
-                ulong  steamUlong;
-                ulong.TryParse(steamId, out steamUlong);
-
-                // Args: alles zwischen commandName und STEAM
-                string argsJoined = "";
-                if (parts.Length > 3)
-                {
-                    var argList = new List<string>();
-                    for (int i = 2; i < parts.Length - 1; i++)
-                    {
-                        if (!parts[i].StartsWith("STEAM:")) argList.Add(parts[i]);
-                    }
-                    argsJoined = string.Join("|", argList);
-                }
-
-                string arg1 = argsJoined.ToLower().Trim();
-
-                string resultText;
-                bool   ok;
-
-                switch (commandName)
-                {
-                    case "status":
-                        resultText = _spawnManager != null ? _spawnManager.GetStatus() : "SpawnManager nicht bereit";
-                        ok = true;
-                        break;
-
-                    case "spawn":
-                        if (string.IsNullOrEmpty(arg1))
-                        {
-                            _spawnManager?.ForceSpawn(steamUlong);
-                            resultText = "Spawn-Timer zurückgesetzt — Kreaturen erscheinen in ~5s";
-                            ok = true;
-                        }
-                        else
-                        {
-                            string subtype = MapCreatureArg(arg1);
-                            if (subtype == null)
-                            {
-                                resultText = "Unbekannter Typ: " + arg1 + " (wolf / spider / spiderbrown / spiderblack)";
-                                ok = false;
-                            }
-                            else
-                            {
-                                _spawnManager?.ForceSpawnType(steamUlong, subtype);
-                                resultText = "Spawn: " + subtype;
-                                ok = true;
-                            }
-                        }
-                        break;
-
-                    case "timer":
-                        if (string.IsNullOrEmpty(arg1))
-                        {
-                            _spawnManager?.ForceSpawn(steamUlong);
-                            resultText = "Timer zurückgesetzt für dich";
-                            ok = true;
-                        }
-                        else
-                        {
-                            resultText = ResetTimerForPlayer(arg1, steamUlong);
-                            ok = resultText != null;
-                            if (!ok) resultText = "Spieler nicht gefunden: " + arg1;
-                        }
-                        break;
-
-                    default:
-                        resultText = "Commands: status | spawn | spawn wolf/spider | timer <name>";
-                        ok = false;
-                        break;
-                }
-
-                SendCmdResult(commandName, argsJoined, steamId, ok, resultText);
-            }
-            catch (Exception ex)
-            {
-                LogError("HandleCommand", ex);
-            }
+            _spawnManager?.ForceSpawn(steamId);
         }
 
-        private void SendCmdResult(string cmd, string args, string steamId, bool ok, string result)
+        public void ForceSpawnType(ulong steamId, string subtype)
         {
-            // Format: CMDRESULT|modName|commandName|argsJoined|steamId|status|resultMessage
-            string msg = "CMDRESULT|" + MOD_NAME + "|" + cmd + "|" + args +
-                         "|" + steamId + "|" + (ok ? "ok" : "error") + "|" + result;
-            MyAPIGateway.Utilities.SendModMessage(CORE_CHANNEL, msg);
+            _spawnManager?.ForceSpawnType(steamId, subtype);
         }
 
-        private string ResetTimerForPlayer(string nameArg, ulong requesterId)
+        // ── HEAVY Callbacks an Core ───────────────────────────────────────────
+
+        public void HeavyStart(string opName)
         {
-            var players = new List<IMyPlayer>();
-            MyAPIGateway.Players.GetPlayers(players);
-            foreach (var p in players)
-            {
-                if (!p.DisplayName.Equals(nameArg, StringComparison.OrdinalIgnoreCase)) continue;
-                _spawnManager?.ForceSpawn(p.SteamUserId);
-                return "Timer zurückgesetzt für: " + p.DisplayName;
-            }
-            return null;
+            try { MyAPIGateway.Utilities.SendModMessage(CORE_CHANNEL, "HEAVY_START|creatures|" + opName); }
+            catch { }
         }
 
-        private string MapCreatureArg(string arg)
+        public void HeavyEnd(string opName)
         {
-            switch (arg)
-            {
-                case "wolf":         return "Wolf";
-                case "spider":       return "SpaceSpider";
-                case "spiderbrown":  return "SpaceSpiderBrown";
-                case "spiderblack":  return "SpaceSpiderBlack";
-                default:             return null;
-            }
-        }
-
-        // ── HEAVY Callbacks (weitergeleitet an Core) ──────────────────────────
-
-        private void HeavyStart(string opName)
-        {
-            MyAPIGateway.Utilities.SendModMessage(CORE_CHANNEL,
-                "HEAVY_START|" + MOD_NAME + "|" + opName);
-        }
-
-        private void HeavyEnd(string opName)
-        {
-            MyAPIGateway.Utilities.SendModMessage(CORE_CHANNEL,
-                "HEAVY_END|" + MOD_NAME + "|" + opName);
+            try { MyAPIGateway.Utilities.SendModMessage(CORE_CHANNEL, "HEAVY_END|creatures|" + opName); }
+            catch { }
         }
 
         // ── Update ────────────────────────────────────────────────────────────
@@ -304,10 +107,10 @@ namespace PhantombiteCreatures.Core
                     return;
                 }
 
-                // PerfLevel 3 = komplett aus
+                // PerfLevel 3 = komplett deaktiviert
                 if (_perfLevel >= 3) return;
 
-                // PerfLevel 1/2 = reduzierte Rate (jeden 2. Tick überspringen)
+                // PerfLevel 1/2 = jeden 2. Tick überspringen
                 if (_perfLevel >= 1 && (MyAPIGateway.Session.GameplayFrameCounter % 2 != 0)) return;
 
                 _spawnManager?.Update();
@@ -315,7 +118,7 @@ namespace PhantombiteCreatures.Core
             }
             catch (Exception ex)
             {
-                LogError("UpdateBeforeSimulation", ex);
+                MyLog.Default.WriteLineAndConsole("[PB.creature] [ERROR] " + SRC + " Update: " + ex);
             }
         }
 
@@ -323,26 +126,24 @@ namespace PhantombiteCreatures.Core
 
         private void Init()
         {
+            if (_initialized) return;
             try
             {
-                // Logger instanziieren (Singleton — muss vor allen anderen Calls erstellt werden)
                 new Creatures_Logger();
-
                 Log("Initialisierung gestartet");
+
                 var definitions = Creatures_FileManager.Load();
                 _spawnManager = new Creatures_SpawnManager();
-
-                // HEAVY Callbacks registrieren
                 _spawnManager.OnHeavyStart = HeavyStart;
                 _spawnManager.OnHeavyEnd   = HeavyEnd;
-
                 _spawnManager.Init(definitions);
+
                 _initialized = true;
                 Log("Initialisierung abgeschlossen — " + definitions.Count + " Definitionen");
             }
             catch (Exception ex)
             {
-                LogError("Init", ex);
+                MyLog.Default.WriteLineAndConsole("[PB.creature] [ERROR] " + SRC + " Init: " + ex);
             }
         }
 
@@ -352,39 +153,21 @@ namespace PhantombiteCreatures.Core
         {
             try
             {
-                if (MyAPIGateway.Utilities != null)
-                    MyAPIGateway.Utilities.UnregisterMessageHandler(MY_CHANNEL, OnCoreMessage);
                 _spawnManager?.Close();
                 Creatures_Logger.Instance?.Close();
+                Instance = null;
             }
             catch (Exception ex)
             {
-                MyLog.Default.WriteLineAndConsole("[PB.creatures] [ERROR] UnloadData: " + ex);
+                MyLog.Default.WriteLineAndConsole("[PB.creature] [ERROR] " + SRC + " UnloadData: " + ex);
             }
         }
 
         // ── Logging ───────────────────────────────────────────────────────────
 
-        private void ApplyLogLevel(int level)
-        {
-            // Creatures_Logger auf neues Level setzen
-            if (Creatures_Logger.Instance == null) return;
-            switch (level)
-            {
-                case 0: Creatures_Logger.Instance.SetLogLevel("normal"); break;
-                case 1: Creatures_Logger.Instance.SetLogLevel("debug");  break;
-                case 2: Creatures_Logger.Instance.SetLogLevel("trace");  break;
-            }
-        }
-
         private void Log(string msg)
         {
-            MyLog.Default.WriteLineAndConsole("[PB.creatures] " + SRC + ": " + msg);
-        }
-
-        private void LogError(string context, Exception ex)
-        {
-            MyLog.Default.WriteLineAndConsole("[PB.creatures] [ERROR] " + context + ": " + ex);
+            MyLog.Default.WriteLineAndConsole("[PB.creature] " + SRC + ": " + msg);
         }
     }
 }
